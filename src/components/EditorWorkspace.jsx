@@ -1,39 +1,54 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './EditorWorkspace.css';
 
-const EditorWorkspace = () => {
+const EditorWorkspace = ({ tikzCode, onCodeChange }) => {
   const editorRef = useRef(null);
   const codeMirrorRef = useRef(null);
+  const previewRef = useRef(null);
   const [isCompiling, setIsCompiling] = useState(false);
-  const [previewUrl, setPreviewUrl] = useState('');
 
+  // Initialize CodeMirror
   useEffect(() => {
-    // Initialize CodeMirror via CDN-loaded global
     if (window.CodeMirror && editorRef.current && !codeMirrorRef.current) {
       codeMirrorRef.current = window.CodeMirror.fromTextArea(editorRef.current, {
         mode: 'stex',
         theme: 'material',
         lineNumbers: true,
         lineWrapping: true,
-        placeholder: '\\begin{tikzpicture}\n    \\draw (0,0) circle (1);\n\\end{tikzpicture}'
       });
 
-      // Simple implementation of real-time preview simulation
-      codeMirrorRef.current.on('change', () => {
-        handleCompile();
+      codeMirrorRef.current.on('change', (instance) => {
+        onCodeChange(instance.getValue());
       });
     }
   }, []);
 
+  // Sync internal CodeMirror value with prop (from Generator)
+  useEffect(() => {
+    if (codeMirrorRef.current && codeMirrorRef.current.getValue() !== tikzCode) {
+      codeMirrorRef.current.setValue(tikzCode);
+    }
+    // Trigger compilation
+    handleCompile();
+  }, [tikzCode]);
+
   const handleCompile = () => {
+    if (!previewRef.current) return;
+    
     setIsCompiling(true);
-    // Simulate compilation delay
+    
+    // TikZJax logic: Clear container and inject new script tag
+    previewRef.current.innerHTML = '';
+    const script = document.createElement('script');
+    script.type = 'text/tikz';
+    script.textContent = tikzCode;
+    previewRef.current.appendChild(script);
+
+    // TikZJax automatically picks up new scripts and renders them.
+    // We simulate a small "compilation" delay for UI feedback
     setTimeout(() => {
       setIsCompiling(false);
-      // In a real app, this would be an SVG from the backend.
-      // We'll use a placeholder for now to demonstrate the UI.
-      setPreviewUrl('https://upload.wikimedia.org/wikipedia/commons/b/b3/TikZ_Example_Coordinates.svg');
-    }, 800);
+    }, 500);
   };
 
   return (
@@ -41,7 +56,6 @@ const EditorWorkspace = () => {
       <h2 className="section-title mb-4">Trình biên dịch TikZ</h2>
       
       <div className="workspace-grid">
-        {/* Editor Side */}
         <div className="editor-side glass-card">
           <div className="card-header">
             <span><i className="fas fa-code"></i> TikZ Code</span>
@@ -51,16 +65,14 @@ const EditorWorkspace = () => {
               </button>
             </div>
           </div>
-          <textarea ref={editorRef}></textarea>
+          <textarea ref={editorRef} defaultValue={tikzCode}></textarea>
         </div>
 
-        {/* Preview Side */}
         <div className="preview-side glass-card">
           <div className="card-header">
-            <span><i className="fas fa-image"></i> Preview</span>
+            <span><i className="fas fa-image"></i> Preview Live</span>
             <div className="header-actions">
               <button className="icon-btn" title="Download SVG"><i className="fas fa-download"></i></button>
-              <button className="icon-btn" title="Expand"><i className="fas fa-expand"></i></button>
             </div>
           </div>
           <div className="preview-container">
@@ -70,14 +82,8 @@ const EditorWorkspace = () => {
                 <span>Đang xử lý hình vẽ...</span>
               </div>
             )}
-            {previewUrl ? (
-              <img src={previewUrl} alt="TikZ Preview" className="preview-img" />
-            ) : (
-              <div className="preview-placeholder">
-                <i className="fas fa-paint-brush"></i>
-                <p>Nhập mã TikZ để thấy kết quả</p>
-              </div>
-            )}
+            {/* Target for TikZJax */}
+            <div ref={previewRef} className="tikz-render-target"></div>
           </div>
         </div>
       </div>

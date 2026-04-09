@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PromptSection.css';
 
-const PromptSection = () => {
+const PromptSection = ({ onGenerate }) => {
+  const [prompt, setPrompt] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleGenerate = async () => {
+    if (!prompt.trim()) return;
+    
+    setIsGenerating(true);
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: prompt, type: 'tikz-gen' })
+      });
+      
+      const data = await response.json();
+      if (data.content) {
+        onGenerate(data.content);
+        // Scroll to editor
+        document.querySelector('.editor-workspace')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } catch (error) {
+      console.error('Generation failed:', error);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   return (
     <section className="prompt-section container animate-slide-up" style={{ animationDelay: '0.1s' }}>
       <div className="prompt-card glass-card">
@@ -18,22 +45,30 @@ const PromptSection = () => {
           <textarea 
             placeholder='VD: "vẽ đồ thị hàm số y = x^2 - 4x + 3"'
             className="prompt-textarea"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            maxLength={500}
           ></textarea>
         </div>
         
         <div className="prompt-footer">
-          <div className="char-count">0 / 500 ký tự</div>
-          <button className="example-btn">
+          <div className="char-count">{prompt.length} / 500 ký tự</div>
+          <button className="example-btn" onClick={() => setPrompt('Vẽ một hình tròn màu xanh lam có bán kính 2cm')}>
             <i className="far fa-lightbulb"></i> Xem ví dụ
           </button>
         </div>
         
-        <button className="generate-btn">
-          <i className="fas fa-paint-brush"></i> Sinh mã TikZ
+        <button 
+          className="generate-btn" 
+          onClick={handleGenerate} 
+          disabled={isGenerating || !prompt.trim()}
+        >
+          <i className={isGenerating ? "fas fa-spinner fa-spin" : "fas fa-paint-brush"}></i> 
+          {isGenerating ? 'Đang tạo mã...' : 'Sinh mã TikZ'}
         </button>
         
         <p className="login-hint">
-          <a href="#">Đăng nhập</a> để sử dụng tính năng sinh mã tự động
+          Thử mô tả: "Vẽ bảng biến thiên hàm số bậc 2" hoặc "Vẽ sơ đồ khối"
         </p>
       </div>
     </section>

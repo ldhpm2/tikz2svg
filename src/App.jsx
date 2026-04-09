@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import SearchBar from './components/SearchBar';
 import PromptSection from './components/PromptSection';
@@ -7,6 +7,8 @@ import ChatWidget from './components/ChatWidget';
 import Footer from './components/Footer';
 
 function App() {
+  const [tikzCode, setTikzCode] = useState('\\begin{tikzpicture}\n    \\draw (0,0) circle (1);\n\\end{tikzpicture}');
+
   return (
     <div className="app-shell">
       {/* Top Navigation */}
@@ -17,10 +19,10 @@ function App() {
         <SearchBar />
 
         {/* AI Generation Section */}
-        <PromptSection />
+        <PromptSection onGenerate={setTikzCode} />
 
         {/* Editor & Preview Workspace */}
-        <EditorWorkspace />
+        <EditorWorkspace tikzCode={tikzCode} onCodeChange={setTikzCode} />
       </main>
 
       {/* Footer */}
