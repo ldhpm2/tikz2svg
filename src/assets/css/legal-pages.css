@@ -1,0 +1,168 @@
+/* 
+ * Legal Pages Stylesheet
+ * Shared CSS for Privacy Policy and Terms of Service pages
+ * Uses CSS Foundation System variables for consistency
+ */
+
+.legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgb(255 255 255 / 98%);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.legal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #2563EB;
+}
+
+.legal-header h1 {
+    color: #2563EB;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.legal-header .last-updated {
+    color: #64748B;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.legal-section {
+    margin-bottom: 2rem;
+}
+
+.legal-section h2 {
+    color: #2563EB;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-left: 4px solid #2563EB;
+    padding-left: 1rem;
+}
+
+.legal-section h3 {
+    color: #334155;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.legal-section p {
+    color: #334155;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.legal-section ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.legal-section li {
+    color: #334155;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info {
+    background: rgb(25 118 210 / 10%);
+    border-left: 4px solid #2563EB;
+    padding: var(--spacing-12);
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-16) 0;
+}
+
+.contact-info h3 {
+    color: #2563EB;
+    margin-top: 0;
+}
+
+.contact-info p,
+.contact-info li {
+    color: #334155;
+}
+
+.highlight-box {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-8);
+    margin: var(--spacing-8) 0;
+}
+
+.highlight-box p,
+.highlight-box li {
+    color: #334155;
+}
+
+.warning-box {
+    background: #FEF9C3;
+    border: 1px solid #FDE68A;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-8);
+    margin: var(--spacing-8) 0;
+}
+
+.warning-box p,
+.warning-box li {
+    color: #334155;
+}
+
+/* Thank you message styling */
+.thank-you-message {
+    text-align: center;
+    font-style: italic;
+    color: #64748B;
+    margin-top: 2rem;
+}
+
+/* Responsive design for mobile devices */
+@media (width <= 768px) {
+    .legal-container {
+        padding: 1.5rem;
+        margin: 1rem;
+        border-radius: 12px;
+    }
+    
+    .legal-header h1 {
+        font-size: 2rem;
+    }
+    
+    .legal-section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .legal-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .contact-info {
+        padding: var(--spacing-8);
+        margin: var(--spacing-12) 0;
+    }
+}
+
+@media (width <= 480px) {
+    .legal-container {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+    
+    .legal-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .legal-section ul {
+        padding-left: 1.5rem;
+    }
+}

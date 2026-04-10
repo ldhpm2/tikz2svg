@@ -1,0 +1,661 @@
+/* ===== PROFILE SVG FILES PAGE CSS ===== */
+
+/* Migrated to use CSS Foundation System - Variables from master-variables.css */
+
+/* Load Order: After master-variables.css and global-base.css */
+
+/* ===== 2. ANIMATIONS ===== */
+@keyframes overlay-fade-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes modal-slide-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes heart-beat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ===== 3. COMPONENT STYLES ===== */
+
+/* All base styles now handled by global-base.css - no duplicates */
+
+/* Profile SVG Content Container removed - sections now standalone */
+
+/* ===== 4. LAYOUT COMPONENTS ===== */
+
+/* .files-grid styles are handled by file_card.css - no duplicates needed */
+
+/* ===== 5. COMPONENT STYLES ===== */
+
+/* ===== Profile Header Components ===== */
+.tikz-app .public-profile-header {
+  text-align: center;
+  margin: var(--spacing-16) auto var(--spacing-16);
+  padding: var(--spacing-8);
+  background: linear-gradient(135deg, var(--syntax-purple) 0%, var(--syntax-pink) 100%);
+  border-radius: var(--radius-md);
+  color: var(--text-white);
+  box-shadow: 0 4px 20px rgb(167 139 250 / 30%);
+  max-width: var(--container-max-width);
+}
+
+.tikz-app .profile-info {
+  margin-bottom: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  flex-wrap: wrap;
+}
+
+.tikz-app .profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  border: 4px solid rgb(255 255 255 / 30%);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tikz-app .profile-avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: rgb(255 255 255 / 20%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  border: 4px solid rgb(255 255 255 / 30%);
+  flex-shrink: 0;
+}
+
+.tikz-app .profile-name {
+  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.tikz-app .profile-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-size: var(--font-size-base);
+}
+
+.tikz-app .profile-stats .separator {
+  color: rgb(255 255 255 / 70%);
+}
+
+.tikz-app .profile-bio {
+  margin-bottom: var(--spacing-4);
+  font-style: italic;
+  font-size: var(--font-size-base);
+  opacity: 0.9;
+  line-height: 1.3; /* Giảm khoảng cách các dòng */
+}
+
+.tikz-app .profile-email {
+  margin-bottom: var(--spacing-4);
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+.tikz-app .profile-actions {
+  margin-top: var(--spacing-16);
+}
+
+.tikz-app .follow-btn {
+  background: var(--primary-color);
+  color: var(--text-white);
+  border: none;
+  padding: var(--spacing-8) var(--spacing-16);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tikz-app .follow-btn:focus {
+  outline: 2px solid var(--text-white);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgb(255 255 255 / 30%);
+}
+
+.tikz-app .follow-btn.btn-secondary {
+  background: var(--bg-muted);
+}
+
+.tikz-app .follow-btn:disabled {
+   background: var(--text-light);
+   opacity: 0.8;
+   cursor: not-allowed;
+ }
+
+ /* Follow button hover effects */
+ .tikz-app .follow-btn.btn-secondary:hover {
+   box-shadow: 0 4px 12px rgb(59 130 246 / 30%);
+   transform: translateY(-2px);
+   transition: all 0.3s ease;
+ }
+
+ .tikz-app .follow-btn.btn-primary:hover {
+   box-shadow: 0 4px 12px rgb(59 130 246 / 30%);
+   transform: translateY(-2px);
+   transition: all 0.3s ease;
+ }
+
+ /* Base transition for smooth animation - merged with existing .follow-btn rule */
+
+.tikz-app .verification-notice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  text-align: center;
+}
+
+.tikz-app .verification-badge {
+  color: var(--text-white);
+  background: var(--warning-color);
+  padding: var(--spacing-4) var(--spacing-8);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.tikz-app .verification-badge a {
+  color: var(--primary-light);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+/* Profile Lists */
+.tikz-app .profile-links {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.tikz-app .profile-links li {
+  position: relative;
+  padding-left: var(--spacing-20);
+  margin-bottom: var(--spacing-2);
+}
+
+.tikz-app .profile-links li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+}
+
+/* Bio container */
+.tikz-app .bio-container {
+  text-align: left;
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+}
+
+.tikz-app .bio-container p {
+  margin: 0 0 var(--spacing-2) 0; /* Giảm khoảng cách giữa các đoạn */
+}
+
+.tikz-app .bio-container ul,
+.tikz-app .bio-container ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.tikz-app .bio-container li {
+  position: relative;
+  padding-left: var(--spacing-20);
+  margin-bottom: var(--spacing-2);
+  text-align: left;
+}
+
+.tikz-app .bio-container ul li::before {
+  content: "•";
+  position: absolute;
+  left: var(--spacing-2);
+  color: var(--text-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+}
+
+.tikz-app .bio-container ol li::before {
+  content: counter(list-counter) ". ";
+  position: absolute;
+  left: var(--spacing-2);
+  color: var(--text-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  counter-increment: list-counter;
+}
+
+.tikz-app .bio-container ol {
+  counter-reset: list-counter;
+}
+
+ /* ===== File Card Components ===== */
+
+ /* File card styles are handled by file_card.css - no duplicates needed */
+
+
+ /* ===== Action Menu Components ===== */
+
+ /* Action menu styles are handled by file_card.css - no duplicates needed */
+
+
+/* ===== Button Components ===== */
+
+/* Button styles are handled by file_card.css - no duplicates needed */
+
+/* ===== Modal Components ===== */
+.tikz-app .modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-modal-backdrop);
+  align-items: center;
+  justify-content: center;
+  animation: overlay-fade-in var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+/* Login modal styles moved to login_modal.css to avoid duplication */
+
+.modal-content .btn-logout {
+  display: inline-block;
+  background: var(--danger-color);
+  color: var(--text-white);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.modal-content .btn-delete {
+  background: var(--danger-color);
+  color: var(--text-white);
+  margin-right: var(--spacing-md);
+}
+
+.modal-content .delete-warning {
+  margin-bottom: var(--spacing-lg);
+  color: var(--danger-color);
+}
+
+/* Delete Modal Specific - Enhanced Design */
+.delete-modal .modal-content {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl) var(--spacing-2xl);
+  min-width: 400px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  animation: modal-slide-in 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delete-modal .modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--danger-color), var(--danger-dark), var(--danger-dark));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.delete-modal .modal-content h3 {
+  margin-bottom: var(--spacing-lg);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.delete-modal .modal-content h3::before {
+  content: '⚠️';
+  font-size: 28px;
+}
+
+.delete-modal .modal-content .delete-warning {
+  margin-bottom: var(--spacing-2xl);
+  color: var(--danger-color);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  font-weight: 600;
+  font-size: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.delete-modal .modal-content .delete-warning::before {
+  content: '🚨';
+  font-size: 16px;
+}
+
+/* Enhanced Delete Modal Buttons */
+.delete-modal .modal-content .btn {
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.delete-modal .modal-content .btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgb(25 118 210 / 20%);
+}
+
+.delete-modal .modal-content .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 20%), transparent);
+  transition: left var(--transition-slow);
+}
+
+.delete-modal .modal-content .btn:hover::before {
+  left: 100%;
+}
+
+/* Button Container for better spacing */
+.delete-modal .modal-content .btn-container {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-md);
+}
+
+.delete-modal .modal-content .btn-delete {
+  background: linear-gradient(135deg, var(--danger-color) 0%, var(--danger-dark) 100%);
+  color: var(--text-white);
+  box-shadow: 0 4px 14px 0 rgb(239 68 68 / 40%);
+  flex: 0 0 auto;
+}
+
+.delete-modal .modal-content .btn-delete:hover {
+  background: var(--danger-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgb(239 68 68 / 50%);
+}
+
+.delete-modal .modal-content .btn-secondary {
+  background: var(--bg-muted);
+  color: var(--text-white);
+  box-shadow: 0 4px 14px 0 rgb(107 114 128 / 40%);
+  flex: 0 0 auto;
+}
+
+.delete-modal .modal-content .btn-secondary:hover {
+  background: var(--text-lighter);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgb(107 114 128 / 50%);
+}
+
+/* Modal Animation */
+.delete-modal {
+  animation: overlay-fade-in var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Form Components ===== */
+
+/* Like Button */
+.tikz-app input[id^="heart-"] {
+  display: none;
+}
+
+ /* Like Button and Copy Button styles are handled by file_card.css - no duplicates needed */
+
+/* ===== Section Headers ===== */
+/* Section styles now handled by unified .files-section-container in file_card.css */
+
+/* ===== TikZ Code Block ===== */
+.tikz-app .tikz-code-block {
+  display: none;
+  margin-top: var(--spacing-8);
+}
+
+/* ===== Empty State ===== */
+.tikz-app .empty-state {
+  color: var(--text-secondary);
+  margin-top: var(--spacing-12);
+}
+
+/* ===== CodeMirror Components ===== */
+.tikz-app .CodeMirror-placeholder {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.tikz-app .CodeMirror-gutter,
+.tikz-app .CodeMirror-gutters,
+.tikz-app .CodeMirror-linenumbers {
+  width: 2.5em;
+  min-width: 2.5em;
+}
+
+.tikz-app .CodeMirror-linenumber,
+.tikz-app .CodeMirror-gutter-elt {
+  min-width: 2em;
+  width: 2em;
+  text-align: right;
+  padding-right: 0.5em;
+  box-sizing: content-box;
+}
+
+/* ===== 6. MEDIA QUERIES ===== */
+
+/* Responsive breakpoints */
+@media (width >= 920px) {
+  .md\:flex { display: flex; }
+  .md\:block { display: block; }
+  .md\:hidden { display: none; }
+}
+
+/* Responsive Design for Delete Modal */
+@media (width <= 768px) {
+  .tikz-app .delete-modal .modal-content {
+    min-width: 320px;
+    max-width: 90vw;
+    padding: var(--spacing-24) var(--spacing-16);
+    margin: var(--spacing-16);
+  }
+  
+  .tikz-app .delete-modal .modal-content h3 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .tikz-app .delete-modal .modal-content .btn-container {
+    gap: var(--spacing-8);
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .tikz-app .delete-modal .modal-content .btn {
+    padding: var(--spacing-8) var(--spacing-16);
+    font-size: var(--font-size-sm);
+    min-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Touch Device Detection */
+@media (hover: none) and (pointer: coarse) {
+  /* Only disable text selection for interactive elements that need it */
+  .tikz-app .Btn, 
+  .tikz-app .action-toggle-btn, 
+  .tikz-app .file-img-container {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+  
+  /* Allow text selection for readable content */
+  .tikz-app .file-info, 
+  .tikz-app .file-creator, 
+  .tikz-app .profile-bio, 
+  .tikz-app .tikz-code-block {
+    user-select: text;
+  }
+}
+
+/* =====================================================
+   OPTIMIZATION: PAGINATION STYLES (Same as index & followed_posts)
+   ===================================================== */
+
+/* Pagination Container */
+.tikz-app .pagination-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Pagination Buttons */
+.tikz-app .pagination-btn {
+    padding: 8px 16px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tikz-app .pagination-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.tikz-app .pagination-btn:active,
+.tikz-app .pagination-btn:focus {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.tikz-app .pagination-btn-active {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+}
+
+.tikz-app .pagination-btn-disabled {
+    background-color: var(--bg-muted);
+    color: var(--text-light);
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Specific styles for prev/next buttons to ensure contrast */
+.tikz-app a.pagination-btn.pagination-btn-next,
+.tikz-app a.pagination-btn.pagination-btn-prev {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.tikz-app a.pagination-btn.pagination-btn-next:hover,
+.tikz-app a.pagination-btn.pagination-btn-prev:hover {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+/* Pagination Ellipsis */
+.tikz-app .pagination-ellipsis {
+    padding: 8px 12px;
+    color: var(--text-muted);
+}
+
+/* Pagination Info */
+.tikz-app .pagination-info {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive Pagination */
+@media (width <= 768px) {
+    .tikz-app .pagination-container {
+        gap: 0.25rem;
+    }
+
+    .tikz-app .pagination-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+} 

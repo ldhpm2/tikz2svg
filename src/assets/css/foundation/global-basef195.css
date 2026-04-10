@@ -1,0 +1,377 @@
+/* ===== GLOBAL BASE STYLES - TIKZ APP FOUNDATION ===== */
+
+/* This file defines base styles that apply to the entire application */
+
+/* Import order: 2nd - After master-variables.css, before components */
+
+/* ===== TIKZ APP CONTAINER - GLOBAL SCOPE ===== */
+.tikz-app {
+  /* Typography Foundation */
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  
+  /* Layout Foundation */
+  width: 100%;
+  min-height: 100vh;
+  
+  /* Box Model Foundation - Let Bootstrap handle globally */
+  box-sizing: border-box;
+  
+  /* Dark mode theme */
+  color-scheme: dark;
+}
+
+/* Option 3: Let Bootstrap handle box-sizing globally - No override needed */
+
+/* 
+.tikz-app *,
+.tikz-app *::before,
+.tikz-app *::after {
+  box-sizing: border-box !important;
+} 
+*/
+
+/* Commented out - Bootstrap already handles this globally */
+
+/* ===== GLOBAL HTML/BODY RESET ===== */
+
+/* ONLY ONE SOURCE OF TRUTH - No more duplicates! */
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  
+  /* Better text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+/* ===== PAGE LAYOUT SYSTEM ===== */
+
+/* Master Page Container - Used by ALL pages */
+.tikz-app .page-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--container-padding-md);
+}
+
+/* Content Containers - For specific content areas */
+.tikz-app .content-container {
+  background: var(--container-bg-primary);
+  border-radius: var(--container-radius-md);
+  box-shadow: var(--container-shadow-medium);
+  padding: var(--container-padding-md);
+  margin: var(--container-margin-md);
+}
+
+.tikz-app .content-container-secondary {
+  background: var(--container-bg-secondary);
+  backdrop-filter: var(--container-bg-blur);
+  border-radius: var(--container-radius-md);
+  box-shadow: var(--container-shadow-light);
+  padding: var(--container-padding-md);
+}
+
+/* ===== TYPOGRAPHY HIERARCHY ===== */
+
+.tikz-app h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--spacing-16) 0;
+  color: var(--text-primary);
+}
+
+.tikz-app h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--spacing-12) 0;
+  color: var(--text-primary);
+}
+
+.tikz-app h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  margin: 0 0 var(--spacing-8) 0;
+  color: var(--text-primary);
+}
+
+.tikz-app h4 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  margin: 0 0 var(--spacing-6) 0;
+  color: var(--text-primary);
+}
+
+.tikz-app p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  margin: 0 0 var(--spacing-8) 0;
+  color: var(--text-primary);
+}
+
+.tikz-app small,
+.tikz-app .small {
+  font-size: var(--font-size-sm);
+  color: var(--text-on-glass);
+}
+
+/* Note: Basic small/small selectors above should handle all cases */
+
+/* ===== FORM FOUNDATION ===== */
+
+.tikz-app button,
+.tikz-app input,
+.tikz-app select,
+.tikz-app textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.tikz-app input,
+.tikz-app select,
+.tikz-app textarea {
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-6) var(--spacing-8);
+  transition: border-color var(--transition-normal);
+}
+
+.tikz-app input:focus,
+.tikz-app select:focus,
+.tikz-app textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-bg);
+}
+
+/* ===== CODE FOUNDATION ===== */
+
+.tikz-app pre,
+.tikz-app code,
+.tikz-app .code,
+.tikz-app .tikz-code,
+.tikz-app textarea[name="code"] {
+  font-family: var(--font-family-mono);
+  font-feature-settings: "liga" 1, "calt" 1;
+  font-variant-ligatures: contextual;
+}
+
+/* CodeMirror Global Styles */
+.tikz-app .CodeMirror,
+.tikz-app .CodeMirror * {
+  font-family: var(--font-family-mono) !important; /* Essential vendor override */
+  font-feature-settings: "liga" 1, "calt" 1;
+  font-variant-ligatures: contextual;
+}
+
+.tikz-app .CodeMirror {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  touch-action: manipulation;
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Spacing Utilities */
+.tikz-app .mt-0 { margin-top: 0; }
+.tikz-app .mt-1 { margin-top: var(--spacing-1); }
+.tikz-app .mt-2 { margin-top: var(--spacing-2); }
+.tikz-app .mt-4 { margin-top: var(--spacing-4); }
+.tikz-app .mt-8 { margin-top: var(--spacing-8); }
+.tikz-app .mt-16 { margin-top: var(--spacing-16); }
+
+.tikz-app .mb-0 { margin-bottom: 0; }
+.tikz-app .mb-1 { margin-bottom: var(--spacing-1); }
+.tikz-app .mb-2 { margin-bottom: var(--spacing-2); }
+.tikz-app .mb-4 { margin-bottom: var(--spacing-4); }
+.tikz-app .mb-8 { margin-bottom: var(--spacing-8); }
+.tikz-app .mb-16 { margin-bottom: var(--spacing-16); }
+
+/* Text Utilities */
+.tikz-app .text-center { text-align: center; }
+.tikz-app .text-left { text-align: left; }
+.tikz-app .text-right { text-align: right; }
+
+.tikz-app .text-primary { color: var(--text-primary); }
+.tikz-app .text-secondary { color: var(--text-secondary); }
+.tikz-app .text-muted { color: var(--text-muted); }
+
+/* Display Utilities */
+.tikz-app .hidden { display: none; }
+.tikz-app .block { display: block; }
+.tikz-app .inline-block { display: inline-block; }
+.tikz-app .flex { display: flex; }
+.tikz-app .inline-flex { display: inline-flex; }
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Mobile First Approach */
+@media (width <= 768px) {
+  body {
+    padding: var(--spacing-8); /* Reduced padding for mobile */
+  }
+  
+  .tikz-app .page-container {
+    padding: var(--container-padding-mobile-md);
+  }
+  
+  .tikz-app h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .tikz-app h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .tikz-app h3 {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (width <= 480px) {
+  body {
+    padding: var(--spacing-6); /* Even less padding for very small screens */
+  }
+  
+  .tikz-app .page-container {
+    padding: var(--spacing-8);
+  }
+  
+  .tikz-app .content-container {
+    padding: var(--spacing-12);
+    margin: var(--spacing-8) 0;
+  }
+}
+
+/* ===== MODAL FOUNDATION ===== */
+
+.tikz-app .modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--modal-overlay);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-modal-backdrop);
+  align-items: center;
+  justify-content: center;
+}
+
+.tikz-app .modal-content {
+  background: var(--container-bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  min-width: 320px;
+  text-align: center;
+}
+
+.tikz-app .modal-title {
+  color: var(--text-header-glass);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+.tikz-app .modal-content h3 {
+  margin-bottom: var(--spacing-16);
+  color: var(--text-primary);
+}
+
+.tikz-app .modal-content p {
+  margin-bottom: var(--spacing-12);
+  color: var(--text-header-glass);
+}
+
+.tikz-app .modal-actions {
+  display: flex;
+  gap: var(--spacing-8);
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--spacing-16);
+}
+
+.tikz-app .modal-actions .btn-danger {
+  background: var(--danger-color);
+  color: white;
+  padding: var(--spacing-6) var(--spacing-12);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tikz-app .modal-actions .btn-danger:hover {
+  background: var(--danger-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.tikz-app .modal-actions .btn-secondary {
+  background: var(--bg-muted);
+  color: var(--text-primary);
+  padding: var(--spacing-6) var(--spacing-12);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tikz-app .modal-actions .btn-secondary:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .tikz-app {
+    color: black;
+    background: white;
+  }
+  
+  .tikz-app .page-container {
+    max-width: none;
+    padding: 0;
+  }
+  
+  .tikz-app .modal-overlay,
+  .tikz-app .modal-overlay[style] {
+    display: none;
+  }
+}
+
+/* ========================================
+   FOOTER COMPONENT - Foundation Styling
+   ======================================== */
+
+.tikz-app .site-footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-20);
+}

@@ -1,0 +1,396 @@
+/* Tailwind-like utility classes for production */
+
+/* Global font stack moved to page-level styles to avoid overrides */
+
+/* CodeMirror styles now centralized in foundation/global-base.css */
+
+/* Preserve monospace for any code-related elements */
+.tikz-app pre, .tikz-app code, .tikz-app .code, .tikz-app .tikz-code, .tikz-app textarea[name="code"] {
+  font-family: var(--font-family-mono);
+  font-feature-settings: "liga" 1, "calt" 1;
+  font-variant-ligatures: contextual;
+}
+.tikz-app .w-full { width: 100%; }
+
+/* Removed max-w-7xl - now using Bootstrap container */
+.tikz-app .mx-auto { 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+.tikz-app .bg-white\/80 { background-color: var(--container-bg-secondary); }
+.tikz-app .backdrop-blur { backdrop-filter: blur(8px); }
+.tikz-app .shadow-lg { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 30%), 0 4px 6px -2px rgb(0 0 0 / 20%); }
+
+/* Custom shadow class to avoid collisions with Bootstrap's .shadow-lg */
+.tikz-app .nv-shadow { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 30%), 0 4px 6px -2px rgb(0 0 0 / 20%); }
+.tikz-app .rounded-2xl { border-radius: 1rem; }
+.tikz-app .p-3 { padding: 0.75rem; }
+.tikz-app .flex { display: flex; }
+.tikz-app .items-center { align-items: center; }
+.tikz-app .justify-between { justify-content: space-between; }
+.tikz-app .mb-8 { margin-bottom: 2rem; }
+.tikz-app .gap-2 { gap: 0.5rem; }
+.tikz-app .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+
+.tikz-app .from-blue-500 { 
+  --tw-gradient-from: #3b82f6; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(59 130 246 / 0%)); 
+}
+.tikz-app .to-yellow-400 { --tw-gradient-to: #fbbf24; }
+.tikz-app .p-1\.5 { padding: 0.375rem; }
+.tikz-app .rounded-lg { border-radius: 0.5rem; }
+.tikz-app .text-white { color: #fff; }
+
+.tikz-app .text-lg { 
+  font-size: 1.125rem; 
+  line-height: 1.75rem; 
+}
+.tikz-app .text-gray-800 { color: var(--text-primary); }
+.tikz-app .font-bold { font-weight: 700; }
+.tikz-app .hidden { display: none; }
+
+.tikz-app .gap-6 { gap: 1.5rem; }
+.tikz-app .font-medium { font-weight: 500; }
+.tikz-app .text-gray-700 { color: var(--text-secondary); }
+.tikz-app .relative { position: relative; }
+
+.tikz-app .px-2 { 
+  padding-left: 0.5rem; 
+  padding-right: 0.5rem; 
+}
+
+.tikz-app .py-1 { 
+  padding-top: 0.25rem; 
+  padding-bottom: 0.25rem; 
+}
+.tikz-app .cursor-pointer { cursor: pointer; }
+
+.tikz-app .transition { 
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; 
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+  transition-duration: 150ms; 
+}
+.tikz-app .hover\:text-blue-600:hover { color: var(--primary-color); }
+.tikz-app .block { display: block; }
+
+.tikz-app .text-sm { 
+  font-size: 0.875rem; 
+  line-height: 1.25rem; 
+}
+
+.tikz-app .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+
+.tikz-app .from-red-400 { 
+  --tw-gradient-from: #f87171; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(248 113 113 / 0%)); 
+}
+.tikz-app .to-red-600 { --tw-gradient-to: #dc2626; }
+
+.tikz-app .px-3 { 
+  padding-left: 0.75rem; 
+  padding-right: 0.75rem; 
+}
+
+.tikz-app .py-1\.5 { 
+  padding-top: 0.375rem; 
+  padding-bottom: 0.375rem; 
+}
+.tikz-app .rounded-xl { border-radius: 0.75rem; }
+.tikz-app .hover\:scale-105:hover { transform: scale(1.05); }
+.tikz-app .font-semibold { font-weight: 600; }
+
+.tikz-app .text-xs { 
+  font-size: 0.75rem; 
+  line-height: 1rem; 
+}
+
+.tikz-app .from-blue-400 { 
+  --tw-gradient-from: #60a5fa; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(96 165 250 / 0%)); 
+}
+
+.tikz-app .hover\:bg-blue-100:hover { background-color: var(--primary-bg); }
+
+.tikz-app .text-2xl { 
+  font-size: 1.5rem; 
+  line-height: 2rem; 
+}
+.tikz-app .text-gray-500 { color: var(--text-muted); }
+.tikz-app .hover\:text-blue-400:hover { color: #60a5fa; }
+.tikz-app .fixed { position: fixed; }
+.tikz-app .top-0 { top: 0; }
+.tikz-app .left-0 { left: 0; }
+.tikz-app .h-full { height: 100%; }
+.tikz-app .bg-black\/50 { background-color: rgb(0 0 0 / 60%); }
+.tikz-app .z-40 { z-index: 40; }
+.tikz-app .z-50 { z-index: 50; }
+.tikz-app .z-400 { z-index: 400; }
+.tikz-app .absolute { position: absolute; }
+.tikz-app .right-0 { right: 0; }
+.tikz-app .w-60 { width: 15rem; }
+.tikz-app .bg-white { background-color: var(--bg-secondary); }
+.tikz-app .flex-col { flex-direction: column; }
+.tikz-app .p-6 { padding: 1.5rem; }
+.tikz-app .gap-3 { gap: 0.75rem; }
+.tikz-app .self-end { align-self: flex-end; }
+
+.tikz-app .py-2 { 
+  padding-top: 0.5rem; 
+  padding-bottom: 0.5rem; 
+}
+.tikz-app .mt-2 { margin-top: 0.5rem; }
+.tikz-app .text-center { text-align: center; }
+.tikz-app .mt-8 { margin-top: 2rem; }
+.tikz-app .w-6 { width: 1.5rem; }
+.tikz-app .h-6 { height: 1.5rem; }
+.tikz-app .rounded-full { border-radius: 9999px; }
+.tikz-app .to-purple-600 { --tw-gradient-to: #9333ea; }
+.tikz-app .justify-center { justify-content: center; }
+.tikz-app .mb-4 { margin-bottom: 1rem; }
+.tikz-app .flex-grow { flex-grow: 1; }
+
+.tikz-app .mx-4 { 
+  margin-left: 1rem; 
+  margin-right: 1rem; 
+}
+.tikz-app .overflow-hidden { overflow: hidden; }
+
+.tikz-app .text-base { 
+  font-size: 1rem; 
+  line-height: 1.5rem; 
+}
+.tikz-app .flex-shrink-0 { flex-shrink: 0; }
+
+/* Responsive breakpoints */
+@media (width >= 920px) {
+    .tikz-app .md\:flex { display: flex; }
+    .tikz-app .md\:block { display: block; }
+    .tikz-app .md\:hidden { display: none; }
+}
+
+@media (width <= 919px) {
+    .tikz-app .md\:flex { display: none; }
+    .tikz-app .md\:block { display: none; }
+    .tikz-app .md\:hidden { display: block; }
+}
+
+/* New Navigation Styles */
+.tikz-app .menu-underline {
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--syntax-orange), var(--syntax-cyan));
+  border-radius: 2px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tikz-app .menu-item.active .menu-underline,
+.tikz-app .menu-item:hover .menu-underline {
+  width: 80%;
+}
+
+/* Menu item resets scoped to navbar */
+.tikz-app nav .menu-item {
+  list-style: none;
+}
+
+.tikz-app nav .menu-item a {
+  text-decoration: none;
+  color: var(--text-secondary);
+}
+
+/* Remove any bullet points or underlines from menu (scoped) */
+.tikz-app nav .hidden.md\:flex {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tikz-app nav .hidden.md\:flex li {
+  list-style: none;
+}
+
+.tikz-app nav .hidden.md\:flex li a {
+  text-decoration: none;
+}
+
+/* Navbar container uses page container defaults; explicit padding removed */
+
+/* Fix mobile menu styling */
+.tikz-app #mobile-menu {
+  z-index: var(--z-popover); /* Higher than search container (z-modal: 1050) to ensure mobile menu appears on top */
+  transition: opacity 0.3s ease;
+}
+
+.tikz-app #mobile-menu.hidden {
+  display: none;
+}
+
+.tikz-app #mobile-menu a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  display: block;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.tikz-app #mobile-menu a:hover {
+  color: var(--primary-light);
+  background-color: var(--primary-bg);
+}
+
+.tikz-app #mobile-menu button:not(.login-btn) {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.tikz-app #mobile-menu button:not(.login-btn):hover {
+  background-color: var(--primary-bg);
+  color: var(--primary-light);
+}
+
+/* Login and Logout buttons in mobile menu - Higher specificity selector */
+.tikz-app #mobile-menu .login-btn.bg-gradient-to-r,
+.tikz-app #mobile-menu .logout-btn.bg-gradient-to-r {
+  width: auto;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+/* Ensure login button keeps its specific gradient colors */
+.tikz-app #mobile-menu .login-btn.bg-gradient-to-r {
+  --tw-gradient-from: var(--syntax-blue);
+  --tw-gradient-to: var(--primary-dark);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+/* Ensure logout button keeps its specific gradient colors */
+.tikz-app #mobile-menu .logout-btn.bg-gradient-to-r {
+  --tw-gradient-from: var(--syntax-red);
+  --tw-gradient-to: var(--danger-dark);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.tikz-app #close-menu {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.tikz-app #close-menu:hover {
+  color: var(--text-secondary);
+}
+
+/* Mobile scroll for menu */
+.tikz-app #scrollable-menu {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.tikz-app #scrollable-menu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Bootstrap utilities handle list styling for #scrollable-menu-list: list-unstyled p-0 m-0 */
+
+/* No overrides needed - clean Bootstrap integration */
+
+.tikz-app #scrollable-menu-list .menu-item {
+    flex-shrink: 0;
+}
+
+/* Remove underlines from scrollable menu links - Higher specificity to override Bootstrap */
+.tikz-app #scrollable-menu #scrollable-menu-list .menu-item a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.tikz-app #scrollable-menu #scrollable-menu-list .menu-item a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Bootstrap utilities handle list styling for #main-menu: list-unstyled p-0 m-0 */
+
+/* No overrides needed - clean Bootstrap integration */
+
+/* Hamburger button styling */
+.tikz-app #menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.tikz-app #menu-toggle:hover {
+    background-color: var(--bg-muted);
+}
+
+.tikz-app #menu-toggle i {
+    font-size: 18px;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.tikz-app #menu-toggle:hover i {
+    color: var(--primary-color);
+}
+
+/* Ensure hamburger is visible on mobile - Aligned with Tailwind md breakpoint */
+@media (width <= 767px) {
+.tikz-app #menu-toggle {
+        display: flex; /* No !important needed - clean breakpoint alignment */
+    }
+}
+
+/* Responsive navbar inherits padding from utility classes and page container */
+
+/* User Profile Link Styling */
+.tikz-app .bg-gray-100 { background-color: var(--bg-muted); }
+.tikz-app .border-gray-300 { border-color: var(--border-color); }
+.tikz-app .hover\:bg-gray-200:hover { background-color: var(--bg-muted); }
+.tikz-app .hover\:border-gray-400:hover { border-color: var(--text-light); }
+
+/* Profile link hover and transition effects */
+.tikz-app a.flex.items-center.gap-2.bg-gray-100 {
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.tikz-app a.flex.items-center.gap-2.bg-gray-100:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 30%);
+}
+
+/* Moved login modal styles to login_modal.css */

@@ -1,0 +1,113 @@
+/* ===== SHARED CSS VARIABLES FOR CONSISTENT STYLING ===== */
+
+/* LEGACY FILE - Container variables now defined in foundation/master-variables.css */
+
+/* This file now only contains container class definitions for backward compatibility */
+
+/* ===== STANDARD CONTAINER STYLES ===== */
+
+/* Foundation system handles .page-container - removed duplicate to avoid conflicts */
+
+/* Content Container - For main content areas */
+.tikz-app .content-container {
+  background: var(--container-bg-primary);
+  padding: var(--container-padding-md);
+  border-radius: var(--container-radius-md);
+  box-shadow: var(--container-shadow-medium);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* Header Container - For page headers */
+.tikz-app .header-container {
+  background: var(--container-bg-secondary);
+  backdrop-filter: var(--container-bg-blur);
+  padding: var(--container-padding-sm);
+  margin: var(--container-margin-sm);
+  border-radius: var(--container-radius-lg);
+  box-shadow: var(--container-shadow-medium);
+}
+
+/* Section Container - For content sections */
+.tikz-app .section-container {
+  background: var(--container-bg-secondary);
+  backdrop-filter: var(--container-bg-blur);
+  padding: var(--container-padding-lg);
+  border-radius: var(--container-radius-lg);
+  box-shadow: var(--container-shadow-medium);
+}
+
+/* ===== MOBILE RESPONSIVE ADJUSTMENTS ===== */
+@media (width <= 768px) {
+  .tikz-app .content-container {
+    padding: var(--container-padding-mobile-md);
+  }
+  
+  .tikz-app .header-container {
+    padding: var(--container-padding-mobile-sm);
+    margin: 15px 0;
+  }
+  
+  .tikz-app .section-container {
+    padding: var(--container-padding-mobile-lg);
+  }
+}
+
+@media (width <= 600px) {
+  .tikz-app .content-container {
+    padding: var(--spacing-20) var(--spacing-2); /* 20px 10px using Foundation spacing */
+  }
+  
+  .tikz-app .header-container {
+    padding: var(--container-padding-mobile-sm);
+    margin: var(--spacing-10) 0; /* 10px 0 using Foundation spacing */
+  }
+  
+  .tikz-app .section-container {
+    padding: var(--container-padding-mobile-sm);
+  }
+}
+
+/* ===== LEGACY COMPATIBILITY CLASSES ===== */
+
+/* These maintain existing functionality while providing path to standardization */
+
+/* .search-header-container moved to search_results.css - avoid duplication */
+
+.tikz-app .verification-container {
+  background: var(--container-bg-secondary);
+  backdrop-filter: var(--container-bg-blur);
+  padding: var(--container-padding-lg);
+  border-radius: var(--container-radius-lg);
+  box-shadow: var(--container-shadow-medium);
+}
+
+.tikz-app .profile-content-container {
+  background: var(--container-bg-primary);
+  padding: var(--container-padding-md);
+  border-radius: var(--container-radius-md);
+  box-shadow: var(--container-shadow-medium);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+/* Mobile adjustments for legacy containers */
+@media (width <= 768px) {
+  .tikz-app .verification-container {
+    padding: var(--container-padding-mobile-lg);
+  }
+  
+  .tikz-app .profile-content-container {
+    padding: var(--container-padding-mobile-md);
+  }
+}
+
+@media (width <= 600px) {
+  .tikz-app .verification-container {
+    padding: var(--container-padding-mobile-sm);
+  }
+  
+  .tikz-app .profile-content-container {
+    padding: var(--spacing-20) var(--spacing-2); /* 20px 10px using Foundation spacing */
+  }
+}

@@ -1,0 +1,1130 @@
+/* 
+ * Documentation Page Stylesheet
+ * Modern, responsive design with sticky sidebar navigation
+ * Uses CSS Foundation System variables for consistency
+ */
+
+/* ============================================
+   Layout Structure
+   ============================================ */
+
+.docs-wrapper {
+    display: grid;
+    grid-template-columns: minmax(240px, 280px) 1fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0;
+    min-height: calc(100vh - 200px);
+}
+
+/* ============================================
+   Sidebar Navigation
+   ============================================ */
+
+.docs-sidebar {
+    position: sticky;
+    top: 100px;
+    width: 100%;
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    background: rgb(255 255 255 / 98%);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+    border: 1px solid rgb(25 118 210 / 15%);
+}
+
+.sidebar-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #2563EB;
+}
+
+.sidebar-header h3 {
+    color: #2563EB;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nav-link,
+.nav-link-sub {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #334155;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link-sub:hover {
+    background: rgb(25 118 210 / 10%);
+    color: #2563EB;
+    transform: translateX(4px);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgb(25 118 210 / 30%);
+}
+
+.nav-link.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: white;
+    border-radius: 0 4px 4px 0;
+}
+
+.nav-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgb(25 118 210 / 20%);
+}
+
+.nav-link-sub {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    font-weight: 400;
+}
+
+.nav-link-sub.active {
+    background: rgb(25 118 210 / 15%);
+    color: #2563EB;
+    font-weight: 600;
+}
+
+/* Custom scrollbar for sidebar */
+.docs-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.docs-sidebar::-webkit-scrollbar-track {
+    background: rgb(0 0 0 / 5%);
+    border-radius: 10px;
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb {
+    background: #2563EB;
+    border-radius: 10px;
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #1D4ED8;
+}
+
+/* ============================================
+   Main Content Area
+   ============================================ */
+
+.docs-content {
+    background: rgb(255 255 255 / 98%);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+    border: 1px solid rgb(25 118 210 / 15%);
+    line-height: 1.8;
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+.docs-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 3px solid #2563EB;
+}
+
+.docs-header h1 {
+    color: #2563EB;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.docs-header .subtitle {
+    color: #334155;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+
+.docs-section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 100px;
+}
+
+.docs-section h2 {
+    color: #2563EB;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgb(25 118 210 / 30%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.docs-section h3 {
+    color: #334155;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.docs-section h4 {
+    color: #334155;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.docs-section p {
+    color: #334155;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.docs-section ul,
+.docs-section ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.docs-section li {
+    color: #334155;
+    margin-bottom: 0.5rem;
+}
+
+.docs-section code {
+    background: rgb(25 118 210 / 10%);
+    color: #1D4ED8;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9em;
+}
+
+/* ============================================
+   Special Boxes
+   ============================================ */
+
+.intro-box {
+    background: linear-gradient(135deg, rgb(25 118 210 / 8%), rgb(25 118 210 / 15%));
+    border-left: 4px solid #2563EB;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.intro-box h3 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.info-box {
+    background: rgb(33 150 243 / 10%);
+    border: 1px solid rgb(33 150 243 / 30%);
+    border-left: 4px solid rgb(33 150 243);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    color: #334155;
+}
+
+.info-box p,
+.info-box li {
+    color: #334155;
+}
+
+.info-box strong {
+    color: rgb(33 150 243);
+}
+
+.highlight-box {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-left: 4px solid #16A34A;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.highlight-box h3 {
+    color: #16A34A;
+    margin-top: 0;
+}
+
+.warning-box {
+    background: #FEF9C3;
+    border: 1px solid #FDE68A;
+    border-left: 4px solid #CA8A04;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+}
+
+.warning-box h3 {
+    color: #CA8A04;
+    margin-top: 0;
+}
+
+/* ============================================
+   Feature Grid
+   ============================================ */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgb(255 255 255 / 95%), rgb(248 250 252 / 95%));
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgb(25 118 210 / 20%);
+    border-color: #2563EB;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+    color: #2563EB;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.feature-card p {
+    color: #334155;
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* ============================================
+   Step Container
+   ============================================ */
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.step-box {
+    display: flex;
+    gap: 1.5rem;
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.step-box:hover {
+    border-color: #2563EB;
+    box-shadow: 0 4px 16px rgb(25 118 210 / 15%);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgb(25 118 210 / 30%);
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3,
+.step-content h4 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.step-content ol,
+.step-content ul {
+    margin: 0.5rem 0;
+}
+
+/* ============================================
+   Code Examples
+   ============================================ */
+
+.code-example {
+    background: rgb(30 41 59);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 15%);
+}
+
+.code-header {
+    background: rgb(15 23 42);
+    color: rgb(148 163 184);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid rgb(51 65 85);
+}
+
+.code-example pre {
+    margin: 0;
+    padding: 1.5rem;
+    overflow-x: auto;
+}
+
+.code-example pre code {
+    background: transparent;
+    color: rgb(248 250 252);
+    padding: 0;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   Package Categories
+   ============================================ */
+
+.package-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.package-category {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.package-category h4 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Status Grid
+   ============================================ */
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.status-card {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.status-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+}
+
+.status-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.status-icon.pending {
+    color: rgb(251 191 36);
+}
+
+.status-icon.review {
+    color: rgb(59 130 246);
+}
+
+.status-icon.approved {
+    color: rgb(34 197 94);
+}
+
+.status-icon.rejected {
+    color: rgb(239 68 68);
+}
+
+.status-card h4 {
+    color: #334155;
+    margin: 0.5rem 0;
+}
+
+.status-card p {
+    color: #64748B;
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: center;
+}
+
+/* ============================================
+   Tips Grid
+   ============================================ */
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.tip-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.tip-card.success {
+    background: #F0FDF4;
+    border: 1px solid #86EFAC;
+    border-left: 4px solid #16A34A;
+}
+
+.tip-card.danger {
+    background: #FEF2F2;
+    border: 1px solid #FCA5A5;
+    border-left: 4px solid #DC2626;
+}
+
+.tip-card h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.tip-card.success h4 {
+    color: #16A34A;
+}
+
+.tip-card.danger h4 {
+    color: #DC2626;
+}
+
+/* ============================================
+   Device Instructions
+   ============================================ */
+
+.device-instructions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.device-box {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.device-box h4 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Actions Table
+   ============================================ */
+
+.actions-table {
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.actions-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+}
+
+.actions-table thead {
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: white;
+}
+
+.actions-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.actions-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgb(0 0 0 / 5%);
+    color: #334155;
+}
+
+.actions-table tbody tr:hover {
+    background: rgb(248 250 252);
+}
+
+/* ============================================
+   Math Examples
+   ============================================ */
+
+.math-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.math-box {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.math-box h4 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Error Solutions
+   ============================================ */
+
+.error-solutions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.error-box {
+    background: rgb(254 242 242 / 95%);
+    border: 1px solid rgb(239 68 68 / 30%);
+    border-left: 4px solid rgb(239 68 68);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.error-box h4 {
+    color: rgb(239 68 68);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.error-box code {
+    background: rgb(239 68 68 / 15%);
+    color: rgb(153 27 27);
+}
+
+/* ============================================
+   Benefits Grid
+   ============================================ */
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.benefit-card {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-card h4 {
+    color: #2563EB;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.benefit-card ul {
+    text-align: left;
+}
+
+/* ============================================
+   Search Modes
+   ============================================ */
+
+.search-modes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.search-mode {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.search-mode h4 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   Device Tips
+   ============================================ */
+
+.device-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.device-tip {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.device-tip h4 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   FAQ List
+   ============================================ */
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.faq-item {
+    background: rgb(248 250 252 / 95%);
+    border: 1px solid rgb(25 118 210 / 20%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #2563EB;
+    box-shadow: 0 4px 12px rgb(25 118 210 / 15%);
+}
+
+.faq-item h3 {
+    color: #2563EB;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.faq-item p {
+    margin-bottom: 0.5rem;
+}
+
+.faq-item .code-example {
+    margin-top: 1rem;
+}
+
+/* ============================================
+   Contact Section
+   ============================================ */
+
+.contact-section {
+    background: linear-gradient(135deg, rgb(25 118 210 / 8%), rgb(25 118 210 / 15%));
+    border-left: 4px solid #2563EB;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.contact-section h3 {
+    color: #2563EB;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.contact-section li {
+    margin-bottom: 0.75rem;
+    color: #334155;
+}
+
+.contact-section p {
+    color: #334155;
+}
+
+.contact-section a {
+    color: #2563EB;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+.thank-you {
+    font-style: italic;
+    color: #334155;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   Scroll to Top Button
+   ============================================ */
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2563EB, #1D4ED8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgb(25 118 210 / 40%);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgb(25 118 210 / 50%);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+/* Mobile First - Extra Small devices (< 576px) */
+@media (width < 576px) {
+    .docs-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1rem auto;
+    }
+    
+    .docs-sidebar {
+        position: static;
+        max-height: none;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    
+    .docs-content {
+        padding: 1rem;
+    }
+    
+    .docs-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .docs-header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .docs-header .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .docs-section {
+        margin-bottom: 2.5rem;
+    }
+    
+    .docs-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .docs-section h3 {
+        font-size: 1.2rem;
+    }
+    
+    .docs-section h4 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .step-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .step-number {
+        margin: 0 auto;
+    }
+    
+    .code-example pre {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .actions-table {
+        font-size: 0.85rem;
+    }
+    
+    .actions-table th,
+    .actions-table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .scroll-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Small devices (≥ 576px) */
+@media (width >= 576px) {
+    .docs-wrapper {
+        grid-template-columns: 180px 1fr;
+        gap: 1rem;
+        margin: 1.5rem auto;
+        max-width: 100%;
+    }
+    
+    .docs-sidebar {
+        position: sticky;
+        top: 100px;
+        width: 180px;
+        max-height: calc(100vh - 120px);
+        margin-bottom: 0;
+        padding: 1rem;
+    }
+    
+    .docs-content {
+        padding: 1.5rem;
+        width: 100%;
+        min-width: 0;
+    }
+    
+    .docs-header h1 {
+        font-size: 2rem;
+    }
+    
+    .docs-header .subtitle {
+        font-size: 1rem;
+    }
+    
+    .docs-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .docs-section h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Medium devices (≥ 768px) */
+@media (width >= 768px) {
+    .docs-wrapper {
+        grid-template-columns: 200px 1fr;
+        gap: 1rem;
+        margin: 1.5rem auto;
+        max-width: 100%;
+    }
+    
+    .docs-sidebar {
+        position: sticky;
+        top: 100px;
+        width: 200px;
+        max-height: calc(100vh - 120px);
+        margin-bottom: 0;
+        padding: 1rem;
+    }
+    
+    .docs-content {
+        padding: 1.5rem;
+        width: 100%;
+        min-width: 0;
+    }
+    
+    .docs-header h1 {
+        font-size: 2rem;
+    }
+    
+    .docs-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .docs-section h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Large devices (≥ 992px) */
+@media (width >= 992px) {
+    .docs-wrapper {
+        grid-template-columns: 245px 1fr;
+        gap: 1.5rem;
+        margin: 2rem auto;
+    }
+    
+    .docs-sidebar {
+        position: sticky;
+        top: 100px;
+        width: 245px;
+        max-height: calc(100vh - 120px);
+        margin-bottom: 0;
+        padding: 1.25rem;
+    }
+    
+    .docs-content {
+        padding: 2rem;
+    }
+    
+    .docs-header h1 {
+        font-size: 2.6rem;
+    }
+}
+
+/* Extra Large devices (≥ 1200px) */
+@media (width >= 1200px) {
+    .docs-wrapper {
+        grid-template-columns: minmax(240px, 260px) 1fr;
+        gap: 2rem;
+    }
+    
+    .docs-sidebar {
+        padding: 1.5rem;
+    }
+    
+    .docs-header h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* Extra Extra Large devices (≥ 1400px) */
+@media (width >= 1400px) {
+    .docs-wrapper {
+        grid-template-columns: minmax(240px, 280px) 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+    .docs-sidebar,
+    .scroll-top-btn {
+        display: none;
+    }
+    
+    .docs-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .docs-content {
+        box-shadow: none;
+        border: none;
+    }
+    
+    .docs-section {
+        page-break-inside: avoid;
+    }
+}
+

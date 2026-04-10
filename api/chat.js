@@ -1,6 +1,5 @@
+/* global process */
 import { GoogleGenerativeAI } from '@google/generative-ai';
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -12,6 +11,9 @@ export default async function handler(req, res) {
   if (!message) {
     return res.status(400).json({ error: 'Message or Prompt is required' });
   }
+
+  const apiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || '';
+  const genAI = new GoogleGenerativeAI(apiKey);
 
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -42,13 +44,13 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('API Error:', error);
     // Fallback if API key is missing or error occurs
-    if (!process.env.GEMINI_API_KEY) {
+    if (!apiKey) {
       return res.status(200).json({ 
         content: type === 'tikz-gen' 
           ? "% Vui lòng cấu hình GEMINI_API_KEY để sử dụng tính năng này\n\\begin{tikzpicture}\n    \\draw (0,0) circle (1);\n\\end{tikzpicture}"
           : "Chào bạn! Tôi đang ở chế độ offline vì chưa có API Key. Hãy cấu hình GEMINI_API_KEY trong Vercel nhé!" 
       });
     }
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ content: `Đã xảy ra lỗi AI: ${error.message}` });
   }
 }

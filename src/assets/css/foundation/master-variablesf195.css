@@ -1,0 +1,292 @@
+/* ===== MASTER CSS VARIABLES - DARK MODE SYNTAX THEME ===== */
+
+/* This file defines ALL variables used across the application */
+/* Theme: Dark-first, inspired by VS Code / One Dark Pro syntax highlighting */
+
+/* Import order: 1st - Must be loaded before all other CSS */
+
+:root {
+  /* ===== COLOR SYSTEM ===== */
+
+  /* Primary Palette (Syntax Blue) */
+  --primary-color: #3B82F6;
+  --primary-dark: #2563EB;
+  --primary-light: #60A5FA;
+  --primary-bg: rgb(59 130 246 / 15%);
+
+  /* Danger/Error Palette (Syntax Red) */
+  --danger-color: #F87171;
+  --danger-dark: #EF4444;
+  --danger-light: #FCA5A5;
+  --danger-bg: rgb(248 113 113 / 12%);
+  --danger-bg-light: rgb(248 113 113 / 6%);
+  --danger-border: rgb(248 113 113 / 25%);
+
+  /* Success Palette (Syntax Green) */
+  --success-color: #4ADE80;
+  --success-dark: #22C55E;
+  --success-light: #86EFAC;
+  --success-bg: rgb(74 222 128 / 12%);
+
+  /* Info Palette (Syntax Cyan) */
+  --info-color: #22D3EE;
+  --info-dark: #06B6D4;
+  --info-darker: #0891B2;
+  --info-bg: rgb(34 211 238 / 12%);
+
+  /* Warning Palette (Syntax Yellow) */
+  --warning-color: #FACC15;
+  --warning-dark: #EAB308;
+  --warning-light: #FDE68A;
+  --warning-bg: rgb(250 204 21 / 12%);
+
+  /* Syntax Highlighting Accent Colors */
+  --syntax-blue: #3B82F6;
+  --syntax-green: #4ADE80;
+  --syntax-orange: #FB923C;
+  --syntax-purple: #A78BFA;
+  --syntax-cyan: #22D3EE;
+  --syntax-red: #F87171;
+  --syntax-yellow: #FACC15;
+  --syntax-pink: #F472B6;
+
+  /* Glow Effects (for hover states) */
+  --glow-blue: 0 0 20px rgb(59 130 246 / 20%);
+  --glow-green: 0 0 20px rgb(74 222 128 / 20%);
+  --glow-purple: 0 0 20px rgb(167 139 250 / 20%);
+  --glow-orange: 0 0 20px rgb(251 146 60 / 20%);
+
+  /* SVG Preview (keep white for SVG visibility) */
+  --svg-preview-bg: #E2E8F0;
+  --svg-preview-border: var(--border-color);
+
+  /* Neutral Palette (Slate scale for dark mode) */
+  --text-primary: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-light: #64748B;
+  --text-lighter: #475569;
+  --text-white: #F8FAFC;
+  --text-black: #F1F5F9;
+  --text-dark: #E2E8F0;
+
+  /* Enhanced Contrast Text for Dark Surfaces */
+  --text-on-glass: #E2E8F0;
+  --text-header-glass: #93C5FD;
+  --text-accent-glass: #60A5FA;
+
+  /* Maximum Contrast Text for Critical Elements */
+  --text-placeholder-emphasis: #64748B;
+
+  /* Background Palette (Slate dark scale) */
+  --bg-primary: #0F172A;
+  --bg-secondary: #1E293B;
+  --bg-tertiary: #1E293B;
+  --bg-muted: #334155;
+  --bg-dark: #020617;
+
+  /* Border Palette */
+  --border-color: #334155;
+  --border-light: #1E293B;
+  --border-muted: #1E293B;
+
+  /* ===== SPACING SYSTEM (8px base) ===== */
+  --spacing-0: 0;
+  --spacing-1: 0.125rem;  /* 2px */
+  --spacing-2: 0.25rem;   /* 4px */
+  --spacing-3: 0.375rem;  /* 6px */
+  --spacing-4: 0.5rem;    /* 8px */
+  --spacing-5: 0.625rem;  /* 10px */
+  --spacing-6: 0.75rem;   /* 12px */
+  --spacing-8: 1rem;      /* 16px */
+  --spacing-10: 1.25rem;  /* 20px */
+  --spacing-12: 1.5rem;   /* 24px */
+  --spacing-16: 2rem;     /* 32px */
+  --spacing-20: 2.5rem;   /* 40px */
+  --spacing-24: 3rem;     /* 48px */
+  --spacing-32: 4rem;     /* 64px */
+
+  /* Legacy Support - Map to new system */
+  --spacing-xs: var(--spacing-2);   /* 4px */
+  --spacing-sm: var(--spacing-4);   /* 8px */
+  --spacing-md: var(--spacing-8);   /* 16px */
+  --spacing-lg: var(--spacing-12);  /* 24px */
+  --spacing-xl: var(--spacing-16);  /* 32px */
+  --spacing-2xl: var(--spacing-24); /* 48px */
+
+  /* ===== CONTAINER SYSTEM ===== */
+
+  /* Container Widths */
+  --container-max-width: 1200px;
+  --container-max-width-sm: 640px;
+  --container-max-width-md: 768px;
+  --container-max-width-lg: 1024px;
+  --container-max-width-xl: 1280px;
+
+  /* Container Backgrounds (Dark elevated surfaces) */
+  --container-bg-primary: var(--bg-primary);
+  --container-bg-secondary: rgb(30 41 59 / 90%);
+  --container-bg-tertiary: var(--bg-tertiary);
+  --container-bg-dark: rgb(2 6 23 / 90%);
+  --container-bg-blur: blur(8px);
+
+  /* Dark Elevated Surfaces (replacing glass morphism) */
+  --glass-bg-light: rgb(30 41 59 / 95%);
+  --glass-bg-medium: rgb(30 41 59 / 88%);
+  --glass-bg-strong: rgb(15 23 42 / 92%);
+  --glass-border: rgb(51 65 85 / 50%);
+  --glass-shadow: 0 8px 32px rgb(0 0 0 / 40%);
+  --glass-blur-light: blur(10px);
+  --glass-blur-medium: blur(12px);
+
+  /* Container Padding */
+  --container-padding-sm: var(--spacing-10) 0;
+  --container-padding-md: var(--spacing-16);
+  --container-padding-lg: var(--spacing-20) 0;
+  --container-padding-xl: var(--spacing-24);
+
+  /* Container Margins */
+  --container-margin-sm: var(--spacing-10) 0;
+  --container-margin-md: var(--spacing-16) 0;
+  --container-margin-lg: var(--spacing-20) 0;
+  --container-margin-xl: var(--spacing-24) 0;
+
+  /* ===== BORDER RADIUS SYSTEM ===== */
+  --radius-none: 0;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 50%;
+
+  /* Legacy Support */
+  --container-radius-sm: var(--radius-md);
+  --container-radius-md: var(--radius-lg);
+  --container-radius-lg: var(--radius-lg);
+
+  /* ===== SHADOW SYSTEM (stronger for dark theme) ===== */
+  --shadow-none: none;
+  --shadow-sm: 0 2px 6px rgb(0 0 0 / 25%);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 35%);
+  --shadow-lg: 0 8px 32px rgb(0 0 0 / 45%);
+  --shadow-xl: 0 12px 48px rgb(0 0 0 / 55%);
+  --shadow-2xl: 0 20px 80px rgb(0 0 0 / 60%);
+
+  /* Legacy Support */
+  --container-shadow-light: var(--shadow-sm);
+  --container-shadow-medium: var(--shadow-lg);
+  --container-shadow-strong: var(--shadow-xl);
+
+  /* ===== TRANSITION SYSTEM ===== */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
+  --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* ===== TYPOGRAPHY SYSTEM ===== */
+
+  /* Font Families */
+  --font-family-primary: -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Cascadia Code', 'Inconsolata', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* ===== Z-INDEX SYSTEM ===== */
+  --z-negative: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-notifications: 1080;
+  --z-always-on-top: 99999;
+  --z-highest: 999999;
+
+  /* ===== MODAL SYSTEM ===== */
+  --modal-overlay: rgb(0 0 0 / 70%);
+
+  /* ===== SCROLLBAR SYSTEM ===== */
+  --scrollbar-thumb: #475569;
+  --scrollbar-thumb-hover: #64748B;
+  --scrollbar-track: #0F172A;
+  --scrollbar-width: 8px;
+
+  /* ===== BREAKPOINTS (Bootstrap Standard) ===== */
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+  --breakpoint-2xl: 1536px;
+
+  /* ===== FORM INPUT SYSTEM ===== */
+  --input-bg: #1E293B;
+  --input-text: var(--text-primary);
+  --input-placeholder: #64748B;
+  --input-border: #334155;
+  --input-border-focus: var(--primary-color);
+  --input-focus-bg: #0F172A;
+  --input-focus-shadow: 0 0 0 3px rgb(59 130 246 / 25%);
+
+  /* ===== ICON SYSTEM ===== */
+  --input-icon-size: 20px;
+  --input-icon-default: #94A3B8;
+  --input-icon-hover: #CBD5E1;
+  --input-icon-focus: var(--primary-color);
+
+  /* Icon Sizes */
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 32px;
+
+  /* ===== MOBILE RESPONSIVE ADJUSTMENTS ===== */
+  --container-padding-mobile-sm: var(--spacing-8) 0;
+  --container-padding-mobile-md: var(--spacing-12);
+  --container-padding-mobile-lg: var(--spacing-10) 0;
+
+  /* ===== PROMPT-TO-TIKZ SECTION VARIABLES ===== */
+  --prompt-bg: var(--glass-bg-light);
+  --prompt-border: rgb(51 65 85 / 30%);
+  --prompt-focus: var(--primary-color);
+  --prompt-error: #F87171;
+  --prompt-success: #4ADE80;
+  --prompt-hint-size: 0.875rem;
+  --prompt-border-radius: var(--radius-md);
+  --prompt-border-width: 1px;
+  --prompt-shadow: var(--glass-shadow);
+  --prompt-focus-shadow: 0 0 0 3px rgb(59 130 246 / 25%);
+  --prompt-transition: var(--transition-fast);
+  --spinner-size: 40px;
+  --spinner-border: 4px;
+  --spinner-color: var(--primary-color);
+}

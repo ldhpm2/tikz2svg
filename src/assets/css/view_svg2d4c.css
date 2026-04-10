@@ -1,0 +1,1621 @@
+/* View SVG Page Styles - Updated with New Responsive Breakpoints */
+
+/* TikZ App Scoped Container */
+.tikz-app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.tikz-app button, 
+.tikz-app input, 
+.tikz-app select, 
+.tikz-app textarea {
+    font-family: inherit;
+}
+
+/* Preserve monospace for any code-related elements */
+.tikz-app pre, 
+.tikz-app code, 
+.tikz-app .code, 
+.tikz-app .tikz-code, 
+.tikz-app textarea[name="code"] {
+    font-family: var(--font-family-mono);
+    font-feature-settings: "liga" 1, "calt" 1;
+    font-variant-ligatures: contextual;
+}
+
+/* View SVG Section Container - Enhanced Glass Morphism matching Index */
+.tikz-app .view-svg-container {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur-medium);
+    padding: var(--spacing-12);
+    margin-bottom: var(--spacing-8);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Add subtle background pattern for texture - matching index */
+.tikz-app .view-svg-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+                rgb(30 41 59 / 10%) 0%, 
+                transparent 50%, 
+                rgb(30 41 59 / 10%) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.tikz-app .view-svg-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-6);
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure all content is above the pattern */
+.tikz-app .view-svg-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* View Mode Row Layout - Default desktop layout */
+.tikz-app #view-mode-row {
+    display: flex;
+    gap: var(--spacing-8);
+    margin-bottom: var(--spacing-6);
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tikz-app .view-col {
+    flex: 1 1 auto;
+    min-width: 0; /* Cho phép flex shrink */
+    box-sizing: border-box;
+}
+
+/* Left column (SVG preview) should be larger */
+.tikz-app .view-col:first-child {
+    flex: 2 1 auto;
+    min-width: 0; /* Cho phép flex shrink */
+}
+
+/* Right column (actions/export) should be smaller */
+.tikz-app .view-col:last-child {
+    flex: 1 1 auto;
+    min-width: 0; /* Cho phép flex shrink */
+}
+
+/* SVG Preview Block - Enhanced with Index-style Background */
+.tikz-app #view-svg-preview {
+    background: var(--svg-preview-bg);
+    border: 1.5px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    height: 400px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle background pattern for texture - matching index */
+.tikz-app #view-svg-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+              rgb(30 41 59 / 10%) 0%, 
+              transparent 50%, 
+              rgb(30 41 59 / 10%) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* SVG image styling - above the pattern */
+.tikz-app #view-svg-preview img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Action Buttons below SVG */
+.tikz-app #view-svg-actions {
+    margin-top: var(--spacing-4);
+    display: flex;
+    gap: var(--spacing-3);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tikz-app #view-svg-actions .view-action-btn {
+    background: #FBBF24;
+    color: #1E293B;
+    padding: var(--spacing-3) var(--spacing-5);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    text-decoration: none;
+    box-shadow: var(--shadow-warning);
+    transition: all var(--transition-fast);
+}
+
+.tikz-app #view-svg-actions .view-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(255 193 7 / 30%);
+}
+
+.tikz-app #view-svg-actions .view-download-btn {
+    background: var(--syntax-cyan);
+    color: var(--text-white);
+}
+
+.tikz-app #view-svg-actions .view-download-btn:hover {
+    box-shadow: 0 4px 12px rgb(23 162 184 / 30%);
+}
+
+/* Back to Edit Button */
+.tikz-app #view-back-to-edit-btn {
+    background: linear-gradient(90deg, var(--success-color) 0%, #16a34a 100%);
+    color: var(--text-white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tikz-app #view-back-to-edit-btn:hover {
+    box-shadow: 0 4px 12px rgb(40 167 69 / 30%);
+    transform: translateY(-2px);
+}
+
+/* Actions section */
+.tikz-app .actions-header {
+    margin-bottom: 20px;
+}
+
+.tikz-app .actions-title {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.tikz-app .actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Export Section */
+.tikz-app .export-section {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgb(0 0 0 / 20%);
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.tikz-app .export-section h4 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.tikz-app #view-export-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 16px;
+}
+
+.tikz-app #view-export-form .export-pair {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.tikz-app #view-export-form .export-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.tikz-app .export-input {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+
+.tikz-app .export-select {
+    width: 100%;
+    min-width: 100px;
+    max-width: 150px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-align: left;
+    direction: ltr;
+    text-indent: 0;
+    unicode-bidi: normal;
+}
+
+.tikz-app .export-number {
+    width: 100%;
+    min-width: 100px;
+    max-width: 150px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-align: left;
+    direction: ltr;
+    text-indent: 0;
+    unicode-bidi: normal;
+}
+
+.tikz-app #view-export-form .export-btn-group {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.tikz-app #view-export-form .export-btn {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--text-white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 140px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tikz-app #view-export-form .export-btn:hover {
+    box-shadow: 0 4px 12px rgb(25 118 210 / 30%);
+    transform: translateY(-2px);
+}
+
+.tikz-app #view-export-msg {
+    text-align: center;
+    color: var(--success-color);
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.tikz-app #view-export-msg.error {
+    color: var(--danger-color);
+}
+
+/* Export Download Link Style */
+.tikz-app .export-download-link {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--syntax-cyan) 0%, #0e7490 100%);
+    color: var(--text-white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgb(23 162 184 / 20%);
+    margin-top: 8px;
+}
+
+.tikz-app .export-download-link:hover {
+    background: linear-gradient(90deg, #0e7490 0%, #0c6378 100%);
+    box-shadow: 0 4px 12px rgb(23 162 184 / 30%);
+    transform: translateY(-2px);
+    color: var(--text-white);
+    text-decoration: none;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS SYSTEM ===== */
+
+/* Base styles: áp dụng cho tất cả thiết bị nhỏ hơn 576px */
+@media (width < 576px) {
+    .tikz-app .view-svg-container {
+        padding: var(--spacing-6);
+    }
+
+    .tikz-app #view-mode-row {
+        flex-direction: column;
+        gap: var(--spacing-6);
+    }
+
+    .tikz-app .view-col:first-child,
+    .tikz-app .view-col:last-child {
+        flex: 1 1 auto;
+        min-width: 100%;
+        max-width: none;
+    }
+
+    .tikz-app #view-export-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+        align-items: center;
+    }
+
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto;
+        margin-bottom: 6px;
+    }
+
+    .tikz-app #view-export-form .export-label {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        margin-right: 6px;
+        white-space: nowrap;
+    }
+
+    .tikz-app #view-export-form .export-select,
+    .tikz-app #view-export-form .export-number {
+        flex: 0 0 auto;
+        width: 100px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+        text-indent: 0;
+        unicode-bidi: normal;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+
+    .tikz-app #view-svg-actions {
+        flex-flow: row wrap;
+        gap: var(--spacing-2);
+        justify-content: center;
+    }
+
+    .tikz-app #view-svg-actions .view-action-btn {
+        flex: 1;
+        min-width: 120px;
+        max-width: 150px;
+    }
+
+    .tikz-app #view-export-form .export-btn,
+    .tikz-app #view-back-to-edit-btn {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Đảm bảo button tải xuống vẫn căn giữa trên màn hình nhỏ */
+    .tikz-app #view-export-form .export-btn-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+/* ≥ 576px — điện thoại lớn (ví dụ iPhone Plus, Pixel XL) */
+@media (width >= 576px) {
+    .tikz-app .view-svg-container {
+        padding: var(--spacing-6);
+        margin: 0 var(--spacing-2);
+        max-width: calc(100vw - var(--spacing-4));
+        box-sizing: border-box;
+    }
+    
+    .tikz-app #view-mode-row {
+        gap: var(--spacing-6);
+        flex-direction: column;
+    }
+    
+    .tikz-app .view-col:first-child,
+    .tikz-app .view-col:last-child {
+        flex: 1 1 auto;
+        min-width: 0;
+        width: 100%;
+    }
+    
+    .tikz-app #view-svg-actions {
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    
+    .tikz-app #view-svg-actions .view-action-btn {
+        width: auto;
+        min-width: 140px;
+    }
+    
+    .tikz-app #view-export-form {
+        gap: var(--spacing-2);
+    }
+    
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--spacing-2);
+    }
+
+    .tikz-app #view-export-form .export-label {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        margin-right: 6px;
+    }
+
+    .tikz-app #view-export-form .export-select {
+        flex: 0 0 auto;
+        width: 90px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-number {
+        flex: 0 0 auto;
+        width: 90px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    .tikz-app .export-section {
+        padding: 16px;
+        margin-top: 16px;
+    }
+    
+    .tikz-app .export-section h4 {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+}
+
+/* 576px-768px — khoảng trung gian cần xử lý đặc biệt */
+@media (width >= 576px) and (width < 768px) {
+    .tikz-app .view-svg-container {
+        padding: var(--spacing-3);
+        margin: 0;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    
+    .tikz-app #view-mode-row {
+        gap: var(--spacing-3);
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .tikz-app .view-col:first-child,
+    .tikz-app .view-col:last-child {
+        flex: 1 1 auto;
+        min-width: 0;
+        width: 100%;
+    }
+    
+    .tikz-app #view-svg-preview {
+        min-height: 250px;
+        height: 300px;
+        padding: var(--spacing-3);
+    }
+    
+    .tikz-app #view-export-form {
+        display: flex;
+        flex-flow: row wrap;
+        gap: var(--spacing-4);
+        align-items: start;
+        justify-content: center;
+    }
+
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--spacing-4);
+        flex: 1;
+        min-width: 240px;
+    }
+
+    .tikz-app #view-export-form .export-label {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        margin-right: 10px;
+    }
+
+    .tikz-app #view-export-form .export-select {
+        flex: 1;
+        width: auto;
+        min-width: 120px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-number {
+        flex: 1;
+        width: auto;
+        min-width: 120px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    .tikz-app #view-export-form .export-btn-group {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--spacing-2);
+        flex-basis: 100%;
+        display: flex;
+    }
+    
+    .tikz-app .export-section {
+        padding: 14px;
+        margin-top: 14px;
+    }
+    
+    .tikz-app .export-section h4 {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .tikz-app #view-export-form .export-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-width: 120px;
+    }
+    
+    /* Back to Edit Button - Compact for 576px-768px */
+    .tikz-app #view-back-to-edit-btn {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        gap: 4px;
+        width: auto;
+        min-width: 200px;
+        max-width: 280px;
+        align-self: center;
+    }
+}
+
+/* ≥ 768px — tablet dọc/ngang */
+@media (width >= 768px) {
+    .tikz-app .view-svg-container {
+        padding: var(--spacing-8);
+        margin: 0 var(--spacing-4);
+        max-width: calc(100vw - var(--spacing-8));
+        box-sizing: border-box;
+    }
+    
+    .tikz-app #view-mode-row {
+        flex-direction: row;
+        gap: var(--spacing-6);
+        align-items: flex-start;
+        width: 100%;
+    }
+    
+    .tikz-app .view-col:first-child {
+        flex: 1.5 1 auto;
+        min-width: 0;
+    }
+    
+    .tikz-app .view-col:last-child {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    
+    .tikz-app #view-export-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3);
+        align-items: center;
+    }
+
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--spacing-3);
+        width: auto;
+    }
+
+    .tikz-app #view-export-form .export-label {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        margin-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-select {
+        flex: 0 0 auto;
+        width: 100px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-number {
+        flex: 0 0 auto;
+        width: 100px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-btn-group {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--spacing-3);
+        flex-basis: 100%;
+        display: flex;
+    }
+
+    .tikz-app .export-section {
+        padding: 18px;
+        margin-top: 18px;
+    }
+    
+    .tikz-app .export-section h4 {
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+    }
+    
+    .tikz-app #view-svg-actions {
+        justify-content: center;
+    }
+    
+    .tikz-app #view-back-to-edit-btn {
+        width: 100%;
+    }
+}
+
+/* ≥ 992px — laptop nhỏ / desktop thường */
+@media (width >= 992px) {
+    .tikz-app .view-svg-container {
+        padding: var(--spacing-12);
+    }
+    
+    .tikz-app .view-col:first-child {
+        flex: 2 1 auto;
+        min-width: 400px;
+    }
+    
+    .tikz-app .view-col:last-child {
+        flex: 1 1 auto;
+        min-width: 320px;
+        max-width: 420px;
+    }
+    
+    .tikz-app #view-export-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3);
+        align-items: center;
+    }
+
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--spacing-3);
+        flex-direction: row;
+    }
+
+    .tikz-app #view-export-form .export-label {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        margin-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-select {
+        flex: 0 0 auto;
+        width: 110px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-number {
+        flex: 0 0 auto;
+        width: 110px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-btn-group {
+        grid-column: 1 / -1;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--spacing-4);
+    }
+    
+    .tikz-app #view-svg-actions {
+        justify-content: center;
+        gap: var(--spacing-4);
+    }
+    
+    .tikz-app #view-svg-actions .view-action-btn {
+        min-width: 160px;
+    }
+}
+
+/* 992px-1200px: Keep 1-column layout but center like smaller screens */
+@media (width >= 992px) and (width < 1200px) {
+    .tikz-app #view-export-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3);
+        align-items: center;
+    }
+
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--spacing-3);
+        width: auto;
+    }
+
+    .tikz-app #view-export-form .export-select,
+    .tikz-app #view-export-form .export-number {
+        flex: 0 0 auto;
+        width: 100px;
+    }
+}
+
+/* ≥ 1200px — desktop rộng */
+@media (width >= 1200px) {
+    .tikz-app .view-svg-container {
+        padding: var(--spacing-16);
+    }
+    
+    .tikz-app #view-mode-row {
+        gap: var(--spacing-12);
+    }
+    
+    .tikz-app .view-col:first-child {
+        flex: 2.5 1 auto;
+        min-width: 500px;
+    }
+    
+    .tikz-app .view-col:last-child {
+        flex: 1 1 auto;
+        min-width: 380px;
+        max-width: 520px;
+    }
+
+    .tikz-app #view-export-form {
+        display: flex;
+        flex-flow: row wrap;
+        gap: var(--spacing-4);
+        align-items: start;
+        justify-content: flex-start;
+    }
+
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--spacing-4);
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .tikz-app #view-export-form .export-label {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        margin-right: 10px;
+    }
+
+    .tikz-app #view-export-form .export-select {
+        flex: 1;
+        width: auto;
+        min-width: 90px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-number {
+        flex: 1;
+        width: auto;
+        min-width: 90px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-btn-group {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--spacing-4);
+        flex-basis: 100%;
+        display: flex;
+    }
+    
+    .tikz-app #view-svg-actions {
+        gap: var(--spacing-5);
+    }
+    
+    .tikz-app #view-svg-actions .view-action-btn {
+        min-width: 180px;
+        padding: var(--spacing-4) var(--spacing-6);
+    }
+}
+
+/* ≥ 1400px — màn hình rất rộng (ultra-wide) */
+@media (width >= 1400px) {
+    .tikz-app .view-svg-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--spacing-20);
+    }
+    
+    .tikz-app #view-mode-row {
+        gap: var(--spacing-16);
+    }
+    
+    .tikz-app .view-col:first-child {
+        flex: 3 1 auto;
+        min-width: 600px;
+    }
+    
+    .tikz-app .view-col:last-child {
+        flex: 1 1 auto;
+        min-width: 450px;
+        max-width: 600px;
+    }
+
+    .tikz-app #view-export-form {
+        display: flex;
+        flex-flow: row wrap;
+        gap: var(--spacing-5);
+        align-items: start;
+        justify-content: flex-start;
+    }
+
+    .tikz-app #view-export-form .export-pair {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: var(--spacing-5);
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .tikz-app #view-export-form .export-label {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        margin-right: 10px;
+    }
+
+    .tikz-app #view-export-form .export-select {
+        flex: 1;
+        width: auto;
+        min-width: 130px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-number {
+        flex: 1;
+        width: auto;
+        min-width: 130px;
+        font-size: 0.875rem;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        box-sizing: border-box;
+        text-align: left;
+        direction: ltr;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .tikz-app #view-export-form .export-btn-group {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--spacing-5);
+        flex-basis: 100%;
+        display: flex;
+    }
+    
+    .tikz-app #view-svg-actions {
+        gap: var(--spacing-6);
+    }
+    
+    .tikz-app #view-svg-actions .view-action-btn {
+        min-width: 200px;
+        padding: var(--spacing-5) var(--spacing-8);
+        font-size: var(--font-size-lg);
+    }
+    
+    .tikz-app #view-back-to-edit-btn {
+        padding: var(--spacing-5) var(--spacing-8);
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* High specificity override để đảm bảo căn trái */
+.tikz-app .export-section .export-form .export-select,
+.tikz-app .export-section .export-form .export-number {
+    text-align: left;
+    direction: ltr;
+}
+
+/* ===== IMAGE CAPTION SECTION ===== */
+
+.tikz-app .image-caption-section {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur-medium);
+    padding: var(--spacing-8);
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-8);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle background pattern */
+.tikz-app .image-caption-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+                rgb(30 41 59 / 10%) 0%, 
+                transparent 50%, 
+                rgb(30 41 59 / 10%) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.tikz-app .caption-section-title {
+    position: relative;
+    z-index: 1;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.tikz-app .caption-icon {
+    font-size: 1.2em;
+}
+
+/* Caption Display Mode */
+.tikz-app .caption-content {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-6);
+    margin-bottom: var(--spacing-4);
+    box-shadow: var(--shadow-sm);
+    border: 1.5px solid var(--border-light);
+}
+
+.tikz-app .caption-text {
+    color: var(--text-dark);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+/* MathJax styling */
+.tikz-app .caption-text mjx-container {
+    margin: var(--spacing-1) 0;
+}
+
+/* Empty State */
+.tikz-app .caption-empty {
+    position: relative;
+    z-index: 1;
+    padding: var(--spacing-6);
+    text-align: center;
+    font-style: italic;
+}
+
+.tikz-app .caption-empty p.caption-empty-text {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+/* Edit Form */
+.tikz-app .caption-edit-form {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-6);
+    margin-bottom: var(--spacing-4);
+    box-shadow: var(--shadow-sm);
+    border: 1.5px solid var(--border-light);
+}
+
+.tikz-app .caption-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: var(--spacing-4);
+    border: 1.5px solid var(--border-light);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    resize: vertical;
+    transition: border-color var(--transition-fast);
+}
+
+.tikz-app .caption-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgb(59 130 246 / 20%);
+}
+
+.tikz-app .caption-form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-3);
+    flex-wrap: wrap;
+    gap: var(--spacing-3);
+}
+
+.tikz-app .caption-char-count {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.tikz-app .caption-actions {
+    display: flex;
+    gap: var(--spacing-3);
+}
+
+.tikz-app .caption-btn {
+    padding: var(--spacing-3) var(--spacing-5);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.tikz-app .caption-btn-save {
+    background: linear-gradient(90deg, var(--success-color) 0%, #16a34a 100%);
+    color: var(--text-white);
+}
+
+.tikz-app .caption-btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(40 167 69 / 30%);
+}
+
+.tikz-app .caption-btn-cancel {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}
+
+.tikz-app .caption-btn-cancel:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-1px);
+}
+
+/* Preview */
+.tikz-app .caption-preview {
+    margin-top: var(--spacing-4);
+    padding-top: var(--spacing-4);
+    border-top: 1px solid var(--border-light);
+}
+
+.tikz-app .caption-preview h4 {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-2);
+}
+
+.tikz-app .caption-preview-content {
+    background: var(--bg-secondary);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-sm);
+    min-height: 60px;
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+    color: var(--text-primary);
+}
+
+/* Edit Button */
+.tikz-app .edit-caption-btn {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--text-white);
+    padding: var(--spacing-3) var(--spacing-5);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin: 0 auto;
+}
+
+.tikz-app .edit-caption-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(59 130 246 / 30%);
+}
+
+.tikz-app .edit-icon {
+    font-size: 1.1em;
+}
+
+/* Messages */
+.tikz-app .caption-message {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--spacing-3);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    display: none;
+}
+
+.tikz-app .caption-message.success {
+    display: block;
+    background: rgb(74 222 128 / 10%);
+    color: var(--success-color);
+    border: 1px solid rgb(74 222 128 / 30%);
+}
+
+.tikz-app .caption-message.error {
+    display: block;
+    background: rgb(248 113 113 / 10%);
+    color: var(--danger-color);
+    border: 1px solid rgb(248 113 113 / 30%);
+}
+
+/* ===== CAPTION RESPONSIVE BREAKPOINTS ===== */
+
+@media (width < 576px) {
+    .tikz-app .image-caption-section {
+        padding: var(--spacing-4);
+    }
+    
+    .tikz-app .caption-section-title {
+        font-size: var(--font-size-lg);
+    }
+    
+    .tikz-app .caption-content,
+    .tikz-app .caption-edit-form {
+        padding: var(--spacing-4);
+    }
+    
+    .tikz-app .caption-textarea {
+        min-height: 120px;
+        font-size: var(--font-size-sm);
+    }
+    
+    .tikz-app .caption-form-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .tikz-app .caption-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+    
+    .tikz-app .caption-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+@media (width >= 768px) {
+    .tikz-app .caption-textarea {
+        min-height: 180px;
+    }
+}
+
+/* ===== TIKZ SOURCE CODE TOGGLE SECTION ===== */
+
+.tikz-app .tikz-source-section {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur-medium);
+    padding: var(--spacing-6);
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background pattern */
+.tikz-app .tikz-source-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+                rgb(30 41 59 / 10%) 0%,
+                transparent 50%,
+                rgb(30 41 59 / 10%) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Toggle Button */
+.tikz-app .tikz-toggle-btn {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background: linear-gradient(90deg, var(--syntax-purple) 0%, #5b4cdb 100%);
+    color: var(--text-white);
+    padding: var(--spacing-4) var(--spacing-5);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+}
+
+.tikz-app .tikz-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(108 92 231 / 30%);
+}
+
+.tikz-app .tikz-toggle-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(108 92 231 / 30%);
+}
+
+.tikz-app .tikz-toggle-btn .toggle-icon {
+    font-size: 1.1em;
+}
+
+.tikz-app .tikz-toggle-btn .toggle-arrow {
+    transition: transform var(--transition-fast);
+    font-size: 0.8em;
+}
+
+.tikz-app .tikz-toggle-btn[aria-expanded="true"] .toggle-arrow {
+    transform: rotate(180deg);
+}
+
+.tikz-app .tikz-toggle-btn[aria-expanded="true"] .toggle-text::after {
+    content: '';
+}
+
+/* Source Block Container */
+.tikz-app .tikz-source-block {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--spacing-4);
+    animation: slideDown 0.2s ease-out;
+}
+
+.tikz-app .tikz-source-block[hidden] {
+    display: none;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Source Header */
+.tikz-app .tikz-source-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-3);
+}
+
+.tikz-app .tikz-source-header .source-label {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+}
+
+/* Copy Button */
+.tikz-app .tikz-copy-btn {
+    background: var(--warning-color);
+    color: #1E293B;
+    padding: var(--spacing-2) var(--spacing-4);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+
+.tikz-app .tikz-copy-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgb(255 193 7 / 30%);
+}
+
+/* Code Wrapper - CodeMirror container */
+.tikz-app .tikz-source-code-wrapper {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+/* CodeMirror instance inside the toggle section */
+.tikz-app .tikz-source-code-wrapper .CodeMirror {
+    height: auto;
+    max-height: 400px;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    background: var(--bg-dark);
+}
+
+.tikz-app .tikz-source-code-wrapper .CodeMirror-scroll {
+    max-height: 400px;
+}
+
+/* Textarea fallback styling (when CodeMirror not available) */
+.tikz-app .tikz-source-code-wrapper textarea {
+    width: 100%;
+    min-height: 150px;
+    max-height: 400px;
+    padding: var(--spacing-4);
+    border: none;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    resize: vertical;
+}
+
+/* Custom scrollbar for CodeMirror */
+.tikz-app .tikz-source-code-wrapper .CodeMirror-vscrollbar::-webkit-scrollbar,
+.tikz-app .tikz-source-code-wrapper .CodeMirror-hscrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.tikz-app .tikz-source-code-wrapper .CodeMirror-vscrollbar::-webkit-scrollbar-track,
+.tikz-app .tikz-source-code-wrapper .CodeMirror-hscrollbar::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.tikz-app .tikz-source-code-wrapper .CodeMirror-vscrollbar::-webkit-scrollbar-thumb,
+.tikz-app .tikz-source-code-wrapper .CodeMirror-hscrollbar::-webkit-scrollbar-thumb {
+    background: var(--bg-muted);
+    border-radius: 4px;
+}
+
+.tikz-app .tikz-source-code-wrapper .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover,
+.tikz-app .tikz-source-code-wrapper .CodeMirror-hscrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* ===== TIKZ SOURCE RESPONSIVE ===== */
+
+@media (width < 576px) {
+    .tikz-app .tikz-source-section {
+        padding: var(--spacing-4);
+        margin-top: var(--spacing-4);
+        margin-bottom: var(--spacing-4);
+    }
+
+    .tikz-app .tikz-toggle-btn {
+        padding: var(--spacing-3) var(--spacing-4);
+        font-size: var(--font-size-sm);
+    }
+
+    .tikz-app .tikz-source-code-wrapper .CodeMirror,
+    .tikz-app .tikz-source-code-wrapper .CodeMirror-scroll {
+        max-height: 250px;
+        font-size: 0.75rem;
+    }
+
+    .tikz-app .tikz-source-code-wrapper textarea {
+        max-height: 250px;
+        font-size: 0.75rem;
+        padding: var(--spacing-3);
+    }
+
+    .tikz-app .tikz-source-header {
+        flex-direction: column;
+        gap: var(--spacing-2);
+        align-items: flex-start;
+    }
+
+    .tikz-app .tikz-copy-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (width >= 576px) and (width < 768px) {
+    .tikz-app .tikz-source-code-wrapper .CodeMirror,
+    .tikz-app .tikz-source-code-wrapper .CodeMirror-scroll {
+        max-height: 300px;
+    }
+
+    .tikz-app .tikz-source-code-wrapper textarea {
+        max-height: 300px;
+    }
+}
+
+@media (width >= 992px) {
+    .tikz-app .tikz-source-section {
+        padding: var(--spacing-8);
+    }
+
+    .tikz-app .tikz-source-code-wrapper .CodeMirror,
+    .tikz-app .tikz-source-code-wrapper .CodeMirror-scroll {
+        max-height: 500px;
+    }
+
+    .tikz-app .tikz-source-code-wrapper textarea {
+        max-height: 500px;
+    }
+}

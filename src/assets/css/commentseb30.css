@@ -1,0 +1,1248 @@
+/**
+ * COMMENTS SYSTEM - STYLES
+ * Version: 1.2.1 Final
+ * Date: 2025-10-22
+ * 
+ * Production-ready CSS for Comments feature with:
+ * - Glass morphism design
+ * - Responsive layout (mobile-first)
+ * - Dark mode support
+ * - Loading skeletons with shimmer
+ * - Smooth animations
+ * - Accessibility (WCAG AAA)
+ */
+
+/* =====================================================
+   COMMENTS SECTION CONTAINER
+   ===================================================== */
+
+.tikz-app .comments-section {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur-medium);
+    padding: var(--spacing-8);
+    margin-top: var(--spacing-6);
+    margin-bottom: var(--spacing-8);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+/* Add subtle background pattern for texture - matching caption section */
+.tikz-app .comments-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+                rgb(30 41 59 / 10%) 0%, 
+                transparent 50%, 
+                rgb(30 41 59 / 10%) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Ensure all content is above the pattern */
+.tikz-app .comments-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.tikz-app .comments-section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tikz-app .comments-icon {
+    font-size: 2rem;
+}
+
+.tikz-app .comments-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: var(--text-white);
+    font-size: 0.875rem;
+    font-weight: 600;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+}
+
+/* =====================================================
+   COMMENT FORM (CREATE NEW COMMENT)
+   ===================================================== */
+
+.tikz-app .comment-form-container {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-blur-medium);
+    border: 1px solid rgb(30 41 59 / 30%);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--glass-shadow);
+}
+
+.tikz-app .comment-form-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.tikz-app .comment-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.tikz-app .comment-user-avatar-fallback {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #9333ea 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: 2px solid var(--border-color);
+}
+
+.tikz-app .comment-user-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.tikz-app .verified-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.tikz-app .verified-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: var(--text-white);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.tikz-app .comment-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    background: var(--input-bg);
+    border: 2px solid var(--input-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: var(--transition-normal);
+    font-family: inherit;
+}
+
+.tikz-app .comment-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgb(30 64 175 / 10%);
+}
+
+.tikz-app .comment-textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.9;
+}
+
+.tikz-app .comment-form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+/* Comment Preview */
+.tikz-app .comment-preview {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.tikz-app .comment-preview h4 {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.tikz-app .comment-preview-content,
+.tikz-app .reply-preview-content {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    min-height: 60px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.tikz-app .comment-char-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.tikz-app .comment-char-count span {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tikz-app .comment-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tikz-app .comment-btn-submit {
+    background: var(--primary-color);
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.tikz-app .comment-btn-cancel {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.tikz-app .comment-btn-cancel:hover {
+    background: var(--bg-tertiary); /* #f8f9fa from master-variables.css */
+}
+
+.tikz-app .comment-btn-submit:disabled {
+    cursor: not-allowed;
+    background: var(--bg-muted);
+    color: var(--text-secondary);
+}
+
+/* Compact buttons for reply form - Higher specificity */
+.tikz-app .reply-form-actions .comment-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: auto;
+    white-space: nowrap;
+    border-radius: var(--radius-md);
+}
+
+.tikz-app .reply-form-actions .comment-btn-cancel {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.tikz-app .reply-form-actions .comment-btn-cancel:hover {
+    background: var(--bg-tertiary);
+    transform: translateY(-1px);
+}
+
+.tikz-app .reply-form-actions .comment-btn-submit {
+    background: var(--primary-color);
+    color: var(--text-white);
+    border: 1px solid var(--primary-color);
+    flex-shrink: 0;
+}
+
+.tikz-app .reply-form-actions .comment-btn-submit:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.tikz-app .comment-btn-submit:hover:not(:disabled) {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.tikz-app .comment-message {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    display: none;
+}
+
+.tikz-app .comment-message.success {
+    display: block;
+    background: var(--success-bg);
+    color: var(--success-dark); /* Using --success-dark from master-variables.css */
+    border: 1px solid var(--success-light); /* Using --success-light as border */
+}
+
+.tikz-app .comment-message.error {
+    display: block;
+    background: var(--danger-bg);
+    color: var(--danger-dark); /* Using --danger-dark from master-variables.css */
+    border: 1px solid var(--danger-border);
+}
+
+/* =====================================================
+   LOGIN PROMPT (GUEST USERS)
+   ===================================================== */
+
+.tikz-app .comment-login-prompt {
+    background: var(--glass-bg-strong); /* Using --glass-bg-strong from master-variables.css */
+    backdrop-filter: blur(10px);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tikz-app .comment-login-prompt p {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.tikz-app .lock-icon {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+.tikz-app .login-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-normal);
+}
+
+.tikz-app .login-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* =====================================================
+   LOADING SKELETON
+   ===================================================== */
+
+.tikz-app .comments-loading {
+    margin-bottom: 2rem;
+}
+
+.tikz-app .comment-skeleton {
+    background: var(--glass-bg-strong); /* Using --glass-bg-strong from master-variables.css */
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.tikz-app .skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(
+        90deg,
+        rgb(200 200 200 / 20%) 25%,
+        rgb(200 200 200 / 40%) 50%,
+        rgb(200 200 200 / 20%) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    flex-shrink: 0;
+}
+
+.tikz-app .skeleton-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tikz-app .skeleton-line {
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(
+        90deg,
+        rgb(200 200 200 / 20%) 25%,
+        rgb(200 200 200 / 40%) 50%,
+        rgb(200 200 200 / 20%) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.tikz-app .skeleton-line-short {
+    width: 30%;
+}
+
+.tikz-app .skeleton-line-medium {
+    width: 60%;
+}
+
+.tikz-app .skeleton-line-long {
+    width: 90%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* =====================================================
+   EMPTY STATE
+   ===================================================== */
+
+.tikz-app .comments-empty {
+    background: var(--glass-bg-strong); /* Using --glass-bg-strong from master-variables.css */
+    backdrop-filter: blur(10px);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tikz-app .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
+
+.tikz-app .empty-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.tikz-app .empty-subtext {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* =====================================================
+   COMMENTS CONTAINER
+   ===================================================== */
+
+.tikz-app .comments-container {
+    margin-bottom: 2rem;
+}
+
+/* =====================================================
+   INDIVIDUAL COMMENT
+   ===================================================== */
+
+.tikz-app .comment {
+    background: var(--glass-bg-strong); /* Using --glass-bg-strong from master-variables.css */
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: var(--transition-normal);
+}
+
+.tikz-app .comment:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.tikz-app .comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.tikz-app .comment-avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    transition: var(--transition-normal);
+}
+
+.tikz-app .comment-avatar-wrapper:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.tikz-app .comment-avatar-wrapper[style*="cursor: pointer"] {
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.tikz-app .comment-avatar-wrapper[style*="cursor: pointer"]:hover {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+.tikz-app .comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.tikz-app .comment-meta {
+    flex: 1;
+    margin-left: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.tikz-app .comment-author-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.tikz-app .comment-author {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    transition: var(--transition-normal);
+}
+
+.tikz-app .comment-author[style*="cursor: pointer"]:hover {
+    color: var(--success-color);
+    text-decoration: underline;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+    background: rgb(40 167 69 / 8%);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.tikz-app .comment-timestamp {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.tikz-app .comment-actions-menu {
+    position: relative;
+}
+
+.tikz-app .comment-menu-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition-normal);
+    line-height: 1;
+}
+
+.tikz-app .comment-menu-btn:hover {
+    background: var(--bg-tertiary); /* #f8f9fa from master-variables.css */
+    color: var(--text-primary);
+}
+
+.tikz-app .comment-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    min-width: 150px;
+    z-index: 100;
+}
+
+.tikz-app .dropdown-item {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tikz-app .dropdown-item:hover {
+    background: var(--bg-tertiary); /* #f8f9fa from master-variables.css */
+}
+
+.tikz-app .dropdown-item:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+}
+
+.tikz-app .dropdown-item:last-child {
+    border-bottom-left-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+}
+
+/* =====================================================
+   COMMENT BODY
+   ===================================================== */
+
+.tikz-app .comment-body {
+    margin-bottom: 1rem;
+}
+
+.tikz-app .comment-text {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tikz-app .comment-edit-form {
+    margin-top: 1rem;
+}
+
+.tikz-app .comment-edit-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.75rem;
+    background: var(--input-bg);
+    border: 2px solid var(--input-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: var(--transition-normal);
+    font-family: inherit;
+}
+
+.tikz-app .comment-edit-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgb(30 64 175 / 10%);
+}
+
+.tikz-app .comment-edit-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.tikz-app .comment-btn-save {
+    background: var(--primary-color);
+    color: var(--text-white);
+}
+
+.tikz-app .comment-btn-save:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* =====================================================
+   COMMENT FOOTER
+   ===================================================== */
+
+.tikz-app .comment-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.tikz-app .comment-like-btn,
+.tikz-app .comment-reply-btn {
+    background: transparent;
+    border: 1px solid var(--text-light); /* Gray for WCAG 2.1 UI component contrast */
+    color: var(--text-primary); /* Very dark gray for maximum visibility (16.32:1 AAA) */
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.tikz-app .comment-like-btn:hover,
+.tikz-app .comment-reply-btn:hover {
+    background: var(--bg-tertiary); /* #f8f9fa from master-variables.css */
+    border-color: var(--primary-color); /* #1976d2 from master-variables.css */
+    color: var(--primary-dark); /* #0d47a1 - Dark blue for visibility (8.19:1 AAA) */
+    transform: translateY(-1px);
+}
+
+.tikz-app .comment-like-btn.liked {
+    background: var(--primary-color); /* Blue for WCAG AAA */
+    color: var(--text-white);
+    border-color: var(--primary-color);
+}
+
+.tikz-app .comment-like-btn.liked:hover {
+    background: var(--primary-dark); /* Dark blue for even better contrast */
+    border-color: var(--primary-dark);
+}
+
+.tikz-app .like-icon,
+.tikz-app .reply-icon {
+    font-size: 1rem;
+}
+
+.tikz-app .like-count {
+    font-weight: 600;
+}
+
+.tikz-app .comment-edited-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* =====================================================
+   REPLY FORM
+   ===================================================== */
+
+.tikz-app .comment-reply-form {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.tikz-app .reply-textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 0.75rem;
+    background: var(--input-bg);
+    border: 2px solid var(--input-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: var(--transition-normal);
+    font-family: inherit;
+}
+
+.tikz-app .reply-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgb(30 64 175 / 10%);
+}
+
+.tikz-app .reply-form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* =====================================================
+   REPLIES CONTAINER (NESTED COMMENTS)
+   ===================================================== */
+
+.tikz-app .comment-replies {
+    margin-top: 1rem;
+    margin-left: 2.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--border-color);
+}
+
+.tikz-app .comment-replies .comment {
+    background: var(--glass-bg-strong); /* Glass morphism like parent comments */
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: var(--transition-normal);
+}
+
+/* Multi-level nested replies support */
+.tikz-app .comment-replies .comment-replies {
+    margin-left: 2rem; /* Giảm dần cho level 3+ */
+    padding-left: 0.8rem;
+    border-left-width: 2px; /* Giảm độ dày border */
+}
+
+.tikz-app .comment-replies .comment-replies .comment-replies {
+    margin-left: 1.5rem; /* Level 4+ */
+    padding-left: 0.6rem;
+    border-left-width: 1px;
+}
+
+.tikz-app .comment-replies .comment-replies .comment-replies .comment-replies {
+    margin-left: 1rem; /* Level 5+ */
+    padding-left: 0.5rem;
+    border-left-width: 1px;
+}
+
+/* Giảm padding cho nested comments sâu hơn */
+.tikz-app .comment-replies .comment-replies .comment {
+    padding: 1.2rem; /* Level 3+ */
+}
+
+.tikz-app .comment-replies .comment-replies .comment-replies .comment {
+    padding: 1rem; /* Level 4+ */
+}
+
+.tikz-app .comment-replies .comment-replies .comment-replies .comment-replies .comment {
+    padding: 0.8rem; /* Level 5+ */
+}
+
+/* =====================================================
+   PAGINATION
+   ===================================================== */
+
+.tikz-app .comments-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tikz-app .pagination-btn {
+    padding: 0.625rem 1.25rem;
+    background: var(--glass-bg-strong); /* Using --glass-bg-strong from master-variables.css */
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.tikz-app .pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.tikz-app .pagination-btn:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.tikz-app .pagination-btn:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.tikz-app .page-info {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.tikz-app .page-info span {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.tikz-app .load-more-btn {
+    width: 100%;
+    padding: 0.875rem;
+    background: var(--glass-bg-strong); /* Using --glass-bg-strong from master-variables.css */
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.tikz-app .load-more-btn:hover {
+    background: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (width <= 768px) {
+    .tikz-app .comments-section {
+        padding: 1.5rem;
+    }
+    
+    .tikz-app .comments-section-title {
+        font-size: 1.5rem;
+    }
+    
+    .tikz-app .comment-form-container,
+    .tikz-app .comment {
+        padding: 1rem;
+    }
+    
+    .tikz-app .comment-user-avatar,
+    .tikz-app .comment-user-avatar-fallback,
+    .tikz-app .comment-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem; /* Smaller text for fallback on mobile */
+    }
+    
+    .tikz-app .comment-textarea {
+        min-height: 80px;
+        font-size: 0.9rem;
+    }
+    
+    .tikz-app .comment-form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .tikz-app .comment-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Compact reply form actions for mobile */
+    .tikz-app .reply-form-actions {
+        gap: 0.375rem;
+        justify-content: center;
+        margin-top: 0.5rem;
+        flex-wrap: nowrap; /* Đảm bảo không xuống hàng */
+    }
+    
+    .tikz-app .reply-form-actions .comment-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        min-width: 60px;
+        flex: 0 0 auto;
+        white-space: nowrap; /* Không ngắt text */
+    }
+    
+    .tikz-app .comment-replies {
+        margin-left: 1rem;
+        padding-left: 0.75rem;
+    }
+    
+    /* Mobile nested replies - giảm margin cho screen nhỏ */
+    .tikz-app .comment-replies .comment-replies {
+        margin-left: 0.8rem;
+        padding-left: 0.5rem;
+    }
+    
+    .tikz-app .comment-replies .comment-replies .comment-replies {
+        margin-left: 0.6rem;
+        padding-left: 0.4rem;
+    }
+    
+    .tikz-app .comment-replies .comment-replies .comment-replies .comment-replies {
+        margin-left: 0.4rem;
+        padding-left: 0.3rem;
+    }
+    
+    /* Mobile nested comments - giảm padding */
+    .tikz-app .comment-replies .comment-replies .comment {
+        padding: 1rem;
+    }
+    
+    .tikz-app .comment-replies .comment-replies .comment-replies .comment {
+        padding: 0.8rem;
+    }
+    
+    .tikz-app .comment-replies .comment-replies .comment-replies .comment-replies .comment {
+        padding: 0.6rem;
+    }
+    
+    .tikz-app .comments-pagination {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .tikz-app .pagination-btn {
+        width: 100%;
+    }
+}
+
+@media (width <= 480px) {
+    .tikz-app .comments-section {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .tikz-app .comments-section-title {
+        font-size: 1.25rem;
+    }
+    
+    .tikz-app .comment-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .tikz-app .comment-footer {
+        flex-flow: row nowrap; /* Giữ 2 nút trên 1 hàng */
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: flex-start; /* Căn trái */ /* Không xuống hàng */
+    }
+    
+    .tikz-app .comment-like-btn,
+    .tikz-app .comment-reply-btn {
+        flex: 0 0 auto; /* Giữ kích thước tự nhiên */
+        justify-content: center;
+
+        /* Giữ nguyên font-size và padding như màn hình lớn */
+        font-size: 0.85rem; 
+        padding: 0.5rem 0.75rem;
+    }
+    
+    /* Extra compact reply form for very small screens */
+    .tikz-app .reply-form-actions {
+        gap: 0.25rem;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        flex-wrap: nowrap; /* Đảm bảo không xuống hàng */
+    }
+    
+    .tikz-app .reply-form-actions .comment-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+        min-width: 45px;
+        flex: 1 1 auto; /* Cho phép co giãn */
+        max-width: 120px; /* Tăng max-width để đủ chỗ */
+        white-space: nowrap; /* Không ngắt text */
+    }
+}
+
+/* =====================================================
+   DARK MODE SUPPORT
+   Override for accessibility when master-variables has dark mode
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+    /* Fix hover state contrast in dark mode */
+    .tikz-app .comment-like-btn:hover,
+    .tikz-app .comment-reply-btn:hover {
+        /* In dark mode, --bg-tertiary becomes #3a3a3a (dark)
+           So we need lighter text for contrast */
+        color: var(--primary-light); /* Light blue for contrast in dark mode */
+    }
+}
+
+/* =====================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ===================================================== */
+
+.tikz-app .comment-btn:focus,
+.tikz-app .load-more-btn:focus,
+.tikz-app .comment-like-btn:focus,
+.tikz-app .comment-reply-btn:focus,
+.tikz-app .comment-menu-btn:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.tikz-app .comment-textarea:focus,
+.tikz-app .comment-edit-textarea:focus,
+.tikz-app .reply-textarea:focus {
+    box-shadow: 0 0 0 3px rgb(66 153 225 / 20%);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .tikz-app .comment,
+    .tikz-app .comment-btn,
+    .tikz-app .pagination-btn,
+    .tikz-app .load-more-btn,
+    .tikz-app .comment-like-btn,
+    .tikz-app .comment-reply-btn {
+        transition: none;
+    }
+    
+    .tikz-app .skeleton-avatar,
+    .tikz-app .skeleton-line {
+        animation: none;
+    }
+}
+
+/* =====================================================
+   TIKZ CODE BLOCKS (Synchronized with file_card.css)
+   ===================================================== */
+
+.tikz-app .tikz-code-block {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-4) 0;
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.tikz-app .tikz-code-block:hover {
+    border-color: var(--primary-color);
+}
+
+/* Code Header - synchronized with file_card.css */
+.tikz-app .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.tikz-app .code-label {
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+/* Copy Button - synchronized with index.css main action buttons */
+.tikz-app .code-copy-btn {
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: var(--text-white);
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: var(--font-weight-semibold);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: var(--shadow-sm);
+}
+
+.tikz-app .code-copy-btn:hover {
+    background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    color: var(--text-white);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px) scale(1.02);
+    outline: none;
+    text-decoration: none;
+}
+
+.tikz-app .code-copy-btn:active {
+    transform: translateY(0) scale(1);
+}
+
+.tikz-app .copy-icon {
+    font-size: 0.875rem;
+}
+
+/* Code Content */
+.tikz-app .tikz-code {
+    margin: 0;
+    padding: 15px;
+    background: var(--bg-dark);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    overflow-x: auto;
+    font-family: var(--font-family-mono);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    max-height: 400px;
+}
+
+.tikz-app .tikz-code code {
+    font-family: inherit;
+    color: inherit;
+    background: none;
+    padding: 0;
+    display: block;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+/* Scrollbar styling - synchronized with file_card.css */
+.tikz-app .tikz-code::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.tikz-app .tikz-code::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+.tikz-app .tikz-code::-webkit-scrollbar-thumb {
+    background: var(--bg-muted);
+    border-radius: 10px;
+}
+
+.tikz-app .tikz-code::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Mobile responsive */
+@media (width <= 768px) {
+    .tikz-app .tikz-code {
+        font-size: 11px;
+        padding: 12px;
+    }
+    
+    .tikz-app .code-header {
+        padding: 8px 12px;
+    }
+    
+    .tikz-app .code-label {
+        font-size: 0.75rem;
+    }
+    
+    .tikz-app .code-copy-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
